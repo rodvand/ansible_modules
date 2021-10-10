@@ -89,8 +89,15 @@
   tags:
     - netbox_rack_role
 
-# - name: "NETBOX_RACK_GROUP TESTS"
-#   include_tasks: "netbox_rack_group.yml"
+- name: "NETBOX_RACK_GROUP TESTS"
+  include_tasks:
+    file: "netbox_rack_group.yml"
+    apply:
+      tags:
+        - netbox_rack_group
+        - "v2.10"
+  tags:
+    - netbox_rack_group
 
 - name: "NETBOX_MANUFACTURER TESTS"
   include_tasks:
@@ -143,8 +150,10 @@
     apply:
       tags:
         - netbox_vlan_group
+        - latest
   tags:
     - netbox_vlan_group
+    - latest
 
 - name: "NETBOX_VLAN TESTS"
   include_tasks:
@@ -154,6 +163,7 @@
         - netbox_vlan
   tags:
     - netbox_vlan
+    - latest
 
 - name: "NETBOX_VRF TESTS"
   include_tasks:
@@ -163,6 +173,7 @@
         - netbox_vrf
   tags:
     - netbox_vrf
+    - latest
 
 - name: "NETBOX_RIR TESTS"
   include_tasks:
@@ -172,6 +183,7 @@
         - netbox_rir
   tags:
     - netbox_rir
+    - latest
 
 - name: "NETBOX_AGGREGATE TESTS"
   include_tasks:
@@ -181,6 +193,7 @@
         - netbox_aggregate
   tags:
     - netbox_aggregate
+    - latest
 
 - name: "NETBOX_REGION TESTS"
   include_tasks:
@@ -190,6 +203,7 @@
         - netbox_region
   tags:
     - netbox_region
+    - latest
 
 - name: "NETBOX_DEVICE_BAY TESTS"
   include_tasks:
@@ -199,6 +213,7 @@
         - netbox_device_bay
   tags:
     - netbox_device_bay
+    - latest
 
 - name: "NETBOX_DEVICE_BAY_TEMPLATE TESTS"
   include_tasks:
@@ -208,6 +223,7 @@
         - netbox_device_bay_template
   tags:
     - netbox_device_bay_template
+    - latest
 
 - name: "NETBOX_INVENTORY_ITEM TESTS"
   include_tasks:
@@ -217,6 +233,7 @@
         - netbox_inventory_item
   tags:
     - netbox_inventory_item
+    - latest
 
 - name: "NETBOX_VIRTUAL_MACHINE TESTS"
   include_tasks:
@@ -226,6 +243,7 @@
         - netbox_virtual_machine
   tags:
     - netbox_virtual_machine
+    - latest
 
 - name: "NETBOX_CLUSTER TESTS"
   include_tasks:
@@ -235,6 +253,7 @@
         - netbox_cluster
   tags:
     - netbox_cluster
+    - latest
 
 - name: "NETBOX_CLUSTER_GROUP TESTS"
   include_tasks:
@@ -244,6 +263,7 @@
         - netbox_cluster_group
   tags:
     - netbox_cluster_group
+    - latest
 
 - name: "NETBOX_CLUSTER_TYPE TESTS"
   include_tasks:
@@ -253,6 +273,7 @@
         - netbox_cluster_type
   tags:
     - netbox_cluster_type
+    - latest
 
 - name: "NETBOX_VM_INTERFACE TESTS"
   include_tasks:
@@ -262,6 +283,7 @@
         - netbox_vm_interface
   tags:
     - netbox_vm_interface
+    - latest
 
 - name: "NETBOX_PROVIDER TESTS"
   include_tasks:
@@ -271,6 +293,7 @@
         - netbox_provider
   tags:
     - netbox_provider
+    - latest
 
 - name: "NETBOX_CIRCUIT_TYPE TESTS"
   include_tasks:
@@ -280,6 +303,7 @@
         - netbox_circuit_type
   tags:
     - netbox_circuit_type
+    - latest
 
 - name: "NETBOX_CIRCUIT TESTS"
   include_tasks:
@@ -289,6 +313,7 @@
         - netbox_circuit
   tags:
     - netbox_circuit
+    - latest
 
 - name: "NETBOX_CIRCUIT_TERMINATION TESTS"
   include_tasks:
@@ -298,6 +323,7 @@
         - netbox_circuit_termination
   tags:
     - netbox_circuit_termination
+    - latest
 
 - name: "NETBOX_REAR_PORT TESTS"
   include_tasks:
@@ -307,6 +333,7 @@
         - netbox_rear_port
   tags:
     - netbox_rear_port
+    - latest
 
 - name: "NETBOX_REAR_PORT_TEMPLATE TESTS"
   include_tasks:
@@ -316,6 +343,7 @@
         - netbox_rear_port_template
   tags:
     - netbox_rear_port_template
+    - latest
 
 - name: "NETBOX_FRONT_PORT TESTS"
   include_tasks:
@@ -325,6 +353,7 @@
         - netbox_front_port
   tags:
     - netbox_front_port
+    - latest
 
 - name: "NETBOX_FRONT_PORT_TEMPLATE TESTS"
   include_tasks:
@@ -334,6 +363,7 @@
         - netbox_front_port_template
   tags:
     - netbox_front_port_template
+    - latest
 
 - name: "NETBOX_CONSOLE_PORT TESTS"
   include_tasks:
@@ -343,6 +373,7 @@
         - netbox_console_port
   tags:
     - netbox_console_port
+    - latest
 
 - name: "NETBOX_CONSOLE_PORT_TEMPLATE TESTS"
   include_tasks:
@@ -352,6 +383,7 @@
         - netbox_console_port_template
   tags:
     - netbox_console_port_template
+    - latest
 
 - name: "NETBOX_CONSOLE_SERVER_PORT TESTS"
   include_tasks:
@@ -361,6 +393,7 @@
         - netbox_console_server_port
   tags:
     - netbox_console_server_port
+    - latest
 
 - name: "NETBOX_CONSOLE_SERVER_PORT_TEMPLATE TESTS"
   include_tasks:
@@ -370,6 +403,7 @@
         - netbox_console_server_port_template
   tags:
     - netbox_console_server_port_template
+    - latest
 
 - name: "NETBOX_POWER_PANEL TESTS"
   include_tasks:
@@ -379,6 +413,7 @@
         - netbox_power_panel
   tags:
     - netbox_power_panel
+    - latest
 
 - name: "NETBOX_POWER_FEED TESTS"
   include_tasks:
@@ -388,11 +423,13 @@
         - netbox_power_feed
   tags:
     - netbox_power_feed
+    - latest
 
 - name: "NETBOX_POWER_PORT TESTS"
   include_tasks: "netbox_power_port.yml"
   tags:
     - netbox_power_port
+    - latest
 
 - name: "NETBOX_POWER_PORT_TEMPLATE TESTS"
   include_tasks:
@@ -402,6 +439,7 @@
         - netbox_power_port_template
   tags:
     - netbox_power_port_template
+    - latest
 
 - name: "NETBOX_POWER_OUTLET TESTS"
   include_tasks:
@@ -411,6 +449,7 @@
         - netbox_power_outlet
   tags:
     - netbox_power_outlet
+    - latest
 
 - name: "NETBOX_POWER_OUTLET_TEMPLATE TESTS"
   include_tasks:
@@ -420,6 +459,7 @@
         - netbox_power_outlet
   tags:
     - netbox_power_outlet_template
+    - latest
 
 - name: "NETBOX_VIRTUAL_CHASSIS TESTS"
   include_tasks:
@@ -429,6 +469,7 @@
         - netbox_virtual_chassis
   tags:
     - netbox_virtual_chassis
+    - latest
 
 - name: "NETBOX_CABLE TESTS"
   include_tasks:
@@ -438,6 +479,7 @@
         - netbox_cable
   tags:
     - netbox_cable
+    - latest
 
 - name: "NETBOX_SERVICE TESTS"
   include_tasks:
@@ -447,6 +489,7 @@
         - netbox_service
   tags:
     - netbox_service
+    - latest
 
 - name: "NETBOX_LOOKUP TESTS"
   include_tasks:
@@ -456,6 +499,7 @@
         - netbox_lookup
   tags:
     - netbox_lookup
+    - latest
 
 - name: "NETBOX_TAG_TESTS"
   include_tasks:
@@ -465,6 +509,7 @@
         - netbox_tag
   tags:
     - netbox_tag
+    - latest
 
 - name: "NETBOX_ROUTE_TARGET_TESTS"
   include_tasks:
@@ -474,3 +519,4 @@
         - netbox_route_target
   tags:
     - netbox_route_target
+    - latest
