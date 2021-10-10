@@ -1,0 +1,476 @@
+---
+- name: "NETBOX_DEVICE TESTS"
+  include_tasks:
+    file: "netbox_device.yml"
+    apply:
+      tags:
+        - netbox_device
+  tags:
+    - netbox_device
+
+- name: "NETBOX_DEVICE_INTERFACE TESTS"
+  include_tasks:
+    file: "netbox_device_interface.yml"
+    apply:
+      tags:
+        - netbox_device_interface
+  tags:
+    - netbox_device_interface
+
+- name: "NETBOX_DEVICE_INTERFACE_TEMPLATE TESTS"
+  include_tasks:
+    file: "netbox_device_interface_template.yml"
+    apply:
+      tags:
+        - netbox_device_interface_template
+  tags:
+    - netbox_device_interface_template
+
+- name: "NETBOX_IP_ADDRESS TESTS"
+  include_tasks:
+    file: "netbox_ip_address.yml"
+    apply:
+      tags:
+        - netbox_ip_address
+  tags:
+    - netbox_ip_address
+
+- name: "NETBOX_PREFIX TESTS"
+  include_tasks:
+    file: "netbox_prefix.yml"
+    apply:
+      tags:
+        - netbox_prefix
+  tags:
+    - netbox_prefix
+
+- name: "NETBOX_SITE TESTS"
+  include_tasks:
+    file: "netbox_site.yml"
+    apply:
+      tags:
+        - netbox_site
+  tags:
+    - netbox_site
+
+- name: "NETBOX_TENTANT TESTS"
+  include_tasks:
+    file: "netbox_tenant.yml"
+    apply:
+      tags:
+        - netbox_tenant
+  tags:
+    - netbox_tenant
+
+- name: "NETBOX_TENTANT_GROUP TESTS"
+  include_tasks:
+    file: "netbox_tenant_group.yml"
+    apply:
+      tags:
+        - netbox_tenant_group
+  tags:
+    - netbox_tenant_group
+
+- name: "NETBOX_RACK TESTS"
+  include_tasks:
+    file: "netbox_rack.yml"
+    apply:
+      tags:
+        - netbox_rack
+  tags:
+    - netbox_rack
+
+- name: "NETBOX_RACK_ROLE TESTS"
+  include_tasks:
+    file: "netbox_rack_role.yml"
+    apply:
+      tags:
+        - netbox_rack_role
+  tags:
+    - netbox_rack_role
+
+# - name: "NETBOX_RACK_GROUP TESTS"
+#   include_tasks: "netbox_rack_group.yml"
+
+- name: "NETBOX_MANUFACTURER TESTS"
+  include_tasks:
+    file: "netbox_manufacturer.yml"
+    apply:
+      tags:
+        - netbox_manufacturer
+  tags:
+    - netbox_manufacturer
+
+- name: "NETBOX_PLATFORM TESTS"
+  include_tasks:
+    file: "netbox_platform.yml"
+    apply:
+      tags:
+        - netbox_platform
+  tags:
+    - netbox_platform
+
+- name: "NETBOX_DEVICE_TYPE TESTS"
+  include_tasks:
+    file: "netbox_device_type.yml"
+    apply:
+      tags:
+        - netbox
+  tags:
+    - netbox_device_type
+
+- name: "NETBOX_DEVICE_ROLE TESTS"
+  include_tasks:
+    file: "netbox_device_role.yml"
+    apply:
+      tags:
+        - netbox
+  tags:
+    - netbox_device_role
+
+- name: "NETBOX_IPAM_ROLE TESTS"
+  include_tasks:
+    file: "netbox_ipam_role.yml"
+    apply:
+      tags:
+        - netbox_ipam_role
+  tags:
+    - netbox_ipam_role
+
+- name: "NETBOX_VLAN_GROUP TESTS"
+  include_tasks:
+    file: "netbox_vlan_group.yml"
+    apply:
+      tags:
+        - netbox_vlan_group
+  tags:
+    - netbox_vlan_group
+
+- name: "NETBOX_VLAN TESTS"
+  include_tasks:
+    file: "netbox_vlan.yml"
+    apply:
+      tags:
+        - netbox_vlan
+  tags:
+    - netbox_vlan
+
+- name: "NETBOX_VRF TESTS"
+  include_tasks:
+    file: "netbox_vrf.yml"
+    apply:
+      tags:
+        - netbox_vrf
+  tags:
+    - netbox_vrf
+
+- name: "NETBOX_RIR TESTS"
+  include_tasks:
+    file: "netbox_rir.yml"
+    apply:
+      tags:
+        - netbox_rir
+  tags:
+    - netbox_rir
+
+- name: "NETBOX_AGGREGATE TESTS"
+  include_tasks:
+    file: "netbox_aggregate.yml"
+    apply:
+      tags:
+        - netbox_aggregate
+  tags:
+    - netbox_aggregate
+
+- name: "NETBOX_REGION TESTS"
+  include_tasks:
+    file: "netbox_region.yml"
+    apply:
+      tags:
+        - netbox_region
+  tags:
+    - netbox_region
+
+- name: "NETBOX_DEVICE_BAY TESTS"
+  include_tasks:
+    file: "netbox_device_bay.yml"
+    apply:
+      tags:
+        - netbox_device_bay
+  tags:
+    - netbox_device_bay
+
+- name: "NETBOX_DEVICE_BAY_TEMPLATE TESTS"
+  include_tasks:
+    file: "netbox_device_bay_template.yml"
+    apply:
+      tags:
+        - netbox_device_bay_template
+  tags:
+    - netbox_device_bay_template
+
+- name: "NETBOX_INVENTORY_ITEM TESTS"
+  include_tasks:
+    file: "netbox_inventory_item.yml"
+    apply:
+      tags:
+        - netbox_inventory_item
+  tags:
+    - netbox_inventory_item
+
+- name: "NETBOX_VIRTUAL_MACHINE TESTS"
+  include_tasks:
+    file: "netbox_virtual_machine.yml"
+    apply:
+      tags:
+        - netbox_virtual_machine
+  tags:
+    - netbox_virtual_machine
+
+- name: "NETBOX_CLUSTER TESTS"
+  include_tasks:
+    file: "netbox_cluster.yml"
+    apply:
+      tags:
+        - netbox_cluster
+  tags:
+    - netbox_cluster
+
+- name: "NETBOX_CLUSTER_GROUP TESTS"
+  include_tasks:
+    file: "netbox_cluster_group.yml"
+    apply:
+      tags:
+        - netbox_cluster_group
+  tags:
+    - netbox_cluster_group
+
+- name: "NETBOX_CLUSTER_TYPE TESTS"
+  include_tasks:
+    file: "netbox_cluster_type.yml"
+    apply:
+      tags:
+        - netbox_cluster_type
+  tags:
+    - netbox_cluster_type
+
+- name: "NETBOX_VM_INTERFACE TESTS"
+  include_tasks:
+    file: "netbox_vm_interface.yml"
+    apply:
+      tags:
+        - netbox_vm_interface
+  tags:
+    - netbox_vm_interface
+
+- name: "NETBOX_PROVIDER TESTS"
+  include_tasks:
+    file: "netbox_provider.yml"
+    apply:
+      tags:
+        - netbox_provider
+  tags:
+    - netbox_provider
+
+- name: "NETBOX_CIRCUIT_TYPE TESTS"
+  include_tasks:
+    file: "netbox_circuit_type.yml"
+    apply:
+      tags:
+        - netbox_circuit_type
+  tags:
+    - netbox_circuit_type
+
+- name: "NETBOX_CIRCUIT TESTS"
+  include_tasks:
+    file: "netbox_circuit.yml"
+    apply:
+      tags:
+        - netbox_circuit
+  tags:
+    - netbox_circuit
+
+- name: "NETBOX_CIRCUIT_TERMINATION TESTS"
+  include_tasks:
+    file: "netbox_circuit_termination.yml"
+    apply:
+      tags:
+        - netbox_circuit_termination
+  tags:
+    - netbox_circuit_termination
+
+- name: "NETBOX_REAR_PORT TESTS"
+  include_tasks:
+    file: "netbox_rear_port.yml"
+    apply:
+      tags:
+        - netbox_rear_port
+  tags:
+    - netbox_rear_port
+
+- name: "NETBOX_REAR_PORT_TEMPLATE TESTS"
+  include_tasks:
+    file: "netbox_rear_port_template.yml"
+    apply:
+      tags:
+        - netbox_rear_port_template
+  tags:
+    - netbox_rear_port_template
+
+- name: "NETBOX_FRONT_PORT TESTS"
+  include_tasks:
+    file: "netbox_front_port.yml"
+    apply:
+      tags:
+        - netbox_front_port
+  tags:
+    - netbox_front_port
+
+- name: "NETBOX_FRONT_PORT_TEMPLATE TESTS"
+  include_tasks:
+    file: "netbox_front_port_template.yml"
+    apply:
+      tags:
+        - netbox_front_port_template
+  tags:
+    - netbox_front_port_template
+
+- name: "NETBOX_CONSOLE_PORT TESTS"
+  include_tasks:
+    file: "netbox_console_port.yml"
+    apply:
+      tags:
+        - netbox_console_port
+  tags:
+    - netbox_console_port
+
+- name: "NETBOX_CONSOLE_PORT_TEMPLATE TESTS"
+  include_tasks:
+    file: "netbox_console_port_template.yml"
+    apply:
+      tags:
+        - netbox_console_port_template
+  tags:
+    - netbox_console_port_template
+
+- name: "NETBOX_CONSOLE_SERVER_PORT TESTS"
+  include_tasks:
+    file: "netbox_console_server_port.yml"
+    apply:
+      tags:
+        - netbox_console_server_port
+  tags:
+    - netbox_console_server_port
+
+- name: "NETBOX_CONSOLE_SERVER_PORT_TEMPLATE TESTS"
+  include_tasks:
+    file: "netbox_console_server_port_template.yml"
+    apply:
+      tags:
+        - netbox_console_server_port_template
+  tags:
+    - netbox_console_server_port_template
+
+- name: "NETBOX_POWER_PANEL TESTS"
+  include_tasks:
+    file: "netbox_power_panel.yml"
+    apply:
+      tags:
+        - netbox_power_panel
+  tags:
+    - netbox_power_panel
+
+- name: "NETBOX_POWER_FEED TESTS"
+  include_tasks:
+    file: "netbox_power_feed.yml"
+    apply:
+      tags:
+        - netbox_power_feed
+  tags:
+    - netbox_power_feed
+
+- name: "NETBOX_POWER_PORT TESTS"
+  include_tasks: "netbox_power_port.yml"
+  tags:
+    - netbox_power_port
+
+- name: "NETBOX_POWER_PORT_TEMPLATE TESTS"
+  include_tasks:
+    file: "netbox_power_port_template.yml"
+    apply:
+      tags:
+        - netbox_power_port_template
+  tags:
+    - netbox_power_port_template
+
+- name: "NETBOX_POWER_OUTLET TESTS"
+  include_tasks:
+    file: "netbox_power_outlet.yml"
+    apply:
+      tags:
+        - netbox_power_outlet
+  tags:
+    - netbox_power_outlet
+
+- name: "NETBOX_POWER_OUTLET_TEMPLATE TESTS"
+  include_tasks:
+    file: "netbox_power_outlet_template.yml"
+    apply:
+      tags:
+        - netbox_power_outlet
+  tags:
+    - netbox_power_outlet_template
+
+- name: "NETBOX_VIRTUAL_CHASSIS TESTS"
+  include_tasks:
+    file: "netbox_virtual_chassis.yml"
+    apply:
+      tags:
+        - netbox_virtual_chassis
+  tags:
+    - netbox_virtual_chassis
+
+- name: "NETBOX_CABLE TESTS"
+  include_tasks:
+    file: "netbox_cable.yml"
+    apply:
+      tags:
+        - netbox_cable
+  tags:
+    - netbox_cable
+
+- name: "NETBOX_SERVICE TESTS"
+  include_tasks:
+    file: "netbox_service.yml"
+    apply:
+      tags:
+        - netbox_service
+  tags:
+    - netbox_service
+
+- name: "NETBOX_LOOKUP TESTS"
+  include_tasks:
+    file: "netbox_lookup.yml"
+    apply:
+      tags:
+        - netbox_lookup
+  tags:
+    - netbox_lookup
+
+- name: "NETBOX_TAG_TESTS"
+  include_tasks:
+    file: "netbox_tag.yml"
+    apply:
+      tags:
+        - netbox_tag
+  tags:
+    - netbox_tag
+
+- name: "NETBOX_ROUTE_TARGET_TESTS"
+  include_tasks:
+    file: "netbox_route_target.yml"
+    apply:
+      tags:
+        - netbox_route_target
+  tags:
+    - netbox_route_target
