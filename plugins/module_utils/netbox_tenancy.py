@@ -14,6 +14,7 @@ from ansible_collections.netbox.netbox.plugins.module_utils.netbox_utils import 
 
 NB_TENANTS = "tenants"
 NB_TENANT_GROUPS = "tenant_groups"
+NB_CONTACTS = "contacts"
 
 
 class NetboxTenancyModule(NetboxModule):

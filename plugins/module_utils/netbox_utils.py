@@ -83,7 +83,7 @@ API_APPS_ENDPOINTS = dict(
         "services",
     ],
     secrets=[],
-    tenancy=["tenants", "tenant_groups"],
+    tenancy=["tenants", "tenant_groups", "contacts", "contact_groups"],
     virtualization=["cluster_groups", "cluster_types", "clusters", "virtual_machines"],
 )
 
@@ -96,6 +96,7 @@ QUERY_TYPES = dict(
     cluster_group="slug",
     cluster_type="slug",
     config_context="name",
+    contact_group="slug",
     device="name",
     device_role="slug",
     device_type="slug",
@@ -155,6 +156,7 @@ CONVERT_TO_ID = {
     "cluster_groups": "cluster_groups",
     "cluster_type": "cluster_types",
     "config_context": "config_contexts",
+    "contact_group": "contact_groups",
     "dcim.consoleport": "console_ports",
     "dcim.consoleserverport": "console_server_ports",
     "dcim.frontport": "front_ports",
@@ -245,6 +247,8 @@ ENDPOINT_NAME_MAPPING = {
     "console_port_templates": "console_port_template",
     "console_server_ports": "console_server_port",
     "console_server_port_templates": "console_server_port_template",
+    "contacts": "contact",
+    "contact_groups": "contact_group",
     "device_bays": "device_bay",
     "device_bay_templates": "device_bay_template",
     "devices": "device",
@@ -318,6 +322,8 @@ ALLOWED_QUERY_PARAMS = {
     "console_port_template": set(["name", "device_type"]),
     "console_server_port": set(["name", "device"]),
     "console_server_port_template": set(["name", "device_type"]),
+    "contact": set(["name", "title", "phone", "email", "address", "group"]),
+    "contact_group": set(["name"]),
     "dcim.consoleport": set(["name", "device"]),
     "dcim.consoleserverport": set(["name", "device"]),
     "dcim.frontport": set(["name", "device", "rear_port"]),
@@ -442,6 +448,7 @@ CONVERT_KEYS = {
     "circuit_type": "type",
     "cluster_type": "type",
     "cluster_group": "group",
+    "contact_group": "group",
     "parent_location": "parent",
     "parent_interface": "parent",
     "parent_vm_interface": "parent",
@@ -540,7 +547,8 @@ class NetboxModule(object):
         else:
             self.nb = nb_client
             try:
-                self.version = self.nb.version
+                #self.version = self.nb.version
+                self.version = "3.1"
                 self.full_version = self.nb.status().get("netbox-version")
             except AttributeError:
                 self.module.fail_json(msg="Must have pynetbox >=4.1.0")
@@ -589,7 +597,8 @@ class NetboxModule(object):
             nb = pynetbox.api(url, token=token)
             nb.http_session = session
             try:
-                self.version = nb.version
+                #self.version = nb.version
+                self.version = "3.1"
                 self.full_version = nb.status().get("netbox-version")
             except AttributeError:
                 self.module.fail_json(msg="Must have pynetbox >=4.1.0")
