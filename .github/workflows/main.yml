@@ -30,7 +30,7 @@ jobs:
       - name: Run Black
         run: poetry run black . --check --diff
       - name: Run Ansible Sanity tests
-        run: ansible-test sanity -v --requirements --python ${{ matrix.python-version }} --skip-test pep8 plugins/
+        run: poetry run ansible-test sanity -v --requirements --python ${{ matrix.python-version }} --skip-test pep8 plugins/
         working-directory: /home/runner/.ansible/collections/ansible_collections/netbox/netbox
       - name: Run Ansible Unit tests
         run: ansible-test units -vvv --coverage --python ${{ matrix.python-version }}
