@@ -610,8 +610,6 @@ class NetboxModule(object):
             nb = pynetbox.api(url, token=token)
             nb.http_session = session
             try:
-                #self.version = nb.version
-                self.version = "3.1"
                 self.full_version = nb.status().get("netbox-version")
             except AttributeError:
                 self.module.fail_json(msg="Must have pynetbox >=4.1.0")
