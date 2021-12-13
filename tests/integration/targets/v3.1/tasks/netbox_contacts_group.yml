@@ -1,0 +1,129 @@
+---
+##
+##
+### NETBOX_CONTACT_GROUP
+##
+##
+- name: "1 - Test contact group creation"
+  netbox.netbox.netbox_contact_group:
+    netbox_url: http://localhost:32768
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data:
+      name: "Test Contact Group Two"
+  register: test_one
+
+- name: "1 - ASSERT"
+  assert:
+    that:
+      - test_one is changed
+      - test_one['diff']['before']['state'] == "absent"
+      - test_one['diff']['after']['state'] == "present"
+      - test_one['contact_group']['name'] == "Test Contact Group Two"
+      - test_one['contact_group']['slug'] == "test-contact-group-two"
+      - test_one['msg'] == "contact_group Test Contact Group Two created"
+
+- name: "Test duplicate contact group"
+  netbox.netbox.netbox_contact_group:
+    netbox_url: http://localhost:32768
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data:
+      name: "Test Contact Group Two"
+  register: test_two
+
+- name: "2 - ASSERT"
+  assert:
+    that:
+      - not test_two['changed']
+      - test_two['contact_group']['name'] == "Test Contact Group Two"
+      - test_two['contact_group']['slug'] == "test-contact-group-two"
+      - test_two['msg'] == "contact_group Test Contact Group Two already exists"
+
+- name: "3 - Test delete"
+  netbox.netbox.netbox_contact_group:
+    netbox_url: http://localhost:32768
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data:
+      name: "Test Contact Group Two"
+    state: "absent"
+  register: test_three
+
+- name: "3 - ASSERT"
+  assert:
+    that:
+      - test_three is changed
+      - test_three['diff']['before']['state'] == "present"
+      - test_three['diff']['after']['state'] == "absent"
+      - test_three['msg'] == "contact_group Test Contact Group Two deleted"
+
+- name: "4 - Test contact group creation with custom slug"
+  netbox.netbox.netbox_contact_group:
+    netbox_url: http://localhost:32768
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data:
+      name: "Test Contact Group ABC"
+      slug: "test_contact_group_four"
+  register: test_four
+
+- name: "4 - ASSERT"
+  assert:
+    that:
+      - test_four is changed
+      - test_four['diff']['before']['state'] == "absent"
+      - test_four['diff']['after']['state'] == "present"
+      - test_four['contact_group']['name'] == "Test Contact Group ABC"
+      - test_four['contact_group']['slug'] == "test_contact_group_four"
+      - test_four['msg'] == "contact_group Test Contact Group ABC created"
+
+- name: "5 - Test child contact group creation"
+  netbox.netbox.netbox_contact_group:
+    netbox_url: http://localhost:32768
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data:
+      name: "Child Test Contact Group"
+      parent_contact_group: "{{ test_four.contact_group.slug }}"
+  register: test_five
+
+- name: "5 - ASSERT"
+  assert:
+    that:
+      - test_five is changed
+      - test_five['diff']['before']['state'] == "absent"
+      - test_five['diff']['after']['state'] == "present"
+      - test_five['contact_group']['name'] == "Child Test Contact Group"
+      - test_five['contact_group']['parent'] == {{ test_four.contact_group.id }}
+      - test_five['msg'] == "contact_group Child Test Contact Group created"
+
+- name: "6 - Test child contact group deletion"
+  netbox.netbox.netbox_contact_group:
+    netbox_url: http://localhost:32768
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data:
+      name: "Child Test Contact Group"
+    state: "absent"
+  register: test_six
+
+- name: "6 - ASSERT"
+  assert:
+    that:
+      - test_six is changed
+      - test_six['diff']['before']['state'] == "present"
+      - test_six['diff']['after']['state'] == "absent"
+      - test_six['msg'] == "contact_group Child Test Contact Group deleted"
+
+- name: "7 - Test deletion of the contact group with custom slug"
+  netbox.netbox.netbox_contact_group:
+    netbox_url: http://localhost:32768
+    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    data:
+      name: "Test Contact Group ABC"
+      slug: "test_contact_group_four"
+    state: "absent"
+  register: test_seven
+
+- name: "7 - ASSERT"
+  assert:
+    that:
+      - test_seven is changed
+      - test_seven['diff']['before']['state'] == "present"
+      - test_seven['diff']['after']['state'] == "absent"
+      - test_seven['msg'] == "contact_group Test Contact Group ABC deleted"

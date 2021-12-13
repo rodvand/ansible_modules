@@ -562,8 +562,6 @@ class NetboxModule(object):
         else:
             self.nb = nb_client
             try:
-                #self.version = self.nb.version
-                self.version = "3.1"
                 self.full_version = self.nb.status().get("netbox-version")
             except AttributeError:
                 self.module.fail_json(msg="Must have pynetbox >=4.1.0")
