@@ -84,6 +84,7 @@ API_APPS_ENDPOINTS = dict(
     ],
     ipam=[
         "aggregates",
+        "asns",
         "ip_addresses",
         "prefixes",
         "rirs",
@@ -107,6 +108,7 @@ API_APPS_ENDPOINTS = dict(
 
 # Used to normalize data for the respective query types used to find endpoints
 QUERY_TYPES = dict(
+    asns="asn",
     circuit="cid",
     circuit_termination="circuit",
     circuit_type="slug",
@@ -175,6 +177,7 @@ QUERY_TYPES = dict(
 # Specifies keys within data that need to be converted to ID and the endpoint to be used when queried
 CONVERT_TO_ID = {
     "assigned_object": "assigned_object",
+    "asns": "asns",
     "bridge": "interfaces",
     "circuit": "circuits",
     "circuit_type": "circuit_types",
@@ -275,6 +278,7 @@ CONVERT_TO_ID = {
 
 ENDPOINT_NAME_MAPPING = {
     "aggregates": "aggregate",
+    "asns": "asns",
     "cables": "cable",
     "circuit_terminations": "circuit_termination",
     "circuit_types": "circuit_type",
@@ -344,6 +348,7 @@ ENDPOINT_NAME_MAPPING = {
 
 ALLOWED_QUERY_PARAMS = {
     "aggregate": set(["prefix", "rir"]),
+    "asns": set(["asn"]),
     "assigned_object": set(["name", "device", "virtual_machine"]),
     "bridge": set(["name", "device"]),
     "circuit": set(["cid"]),
@@ -503,7 +508,7 @@ REQUIRED_ID_FIND = {
     "rear_ports": set(["type"]),
     "rear_port_templates": set(["type"]),
     "services": set(["protocol"]),
-    "sites": set(["status"]),
+    "sites": set(["status", "asns"]),
     "virtual_machines": set(["status", "face"]),
     "vlans": set(["status"]),
 }

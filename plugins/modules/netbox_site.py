@@ -66,6 +66,12 @@ options:
           - The ASN associated with the site
         required: false
         type: int
+      asns:
+        description:
+          - The ASN(s) associated with the site (NetBox 3.1 +)
+        required: false
+        type: list
+        elements: raw
       time_zone:
         description:
           - Timezone associated with the site, ex. America/Denver
@@ -223,6 +229,7 @@ def main():
                     tenant=dict(required=False, type="raw"),
                     facility=dict(required=False, type="str"),
                     asn=dict(required=False, type="int"),
+                    asns=dict(required=False, type="list", elements="raw"),
                     time_zone=dict(required=False, type="str"),
                     description=dict(required=False, type="str"),
                     physical_address=dict(required=False, type="str"),

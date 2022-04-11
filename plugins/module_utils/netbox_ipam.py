@@ -19,6 +19,7 @@ from ansible_collections.netbox.netbox.plugins.module_utils.netbox_utils import 
 
 
 NB_AGGREGATES = "aggregates"
+NB_ASNS = "asns"
 NB_IP_ADDRESSES = "ip_addresses"
 NB_PREFIXES = "prefixes"
 NB_IPAM_ROLES = "roles"
