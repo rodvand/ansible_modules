@@ -82,6 +82,7 @@ API_APPS_ENDPOINTS = dict(
         "custom_fields",
         "custom_links",
         "export_templates",
+        "journal_entries",
         "webhooks",
     ],
     ipam=[
@@ -309,6 +310,7 @@ ENDPOINT_NAME_MAPPING = {
     "export_templates": "export_template",
     "front_ports": "front_port",
     "front_port_templates": "front_port_template",
+    "journal_entries": "journal_entries",
     "interfaces": "interface",
     "interface_templates": "interface_template",
     "inventory_items": "inventory_item",
