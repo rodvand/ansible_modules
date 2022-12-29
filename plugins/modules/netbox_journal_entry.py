@@ -29,108 +29,33 @@ options:
   data:
     type: dict
     description:
-      - Defines the IP address configuration
+      - Defines the journal entry
     suboptions:
-      family:
-         description:
-           - (DEPRECATED) - NetBox now handles determining the IP family natively.
-           - Specifies with address family the IP address belongs to
-         choices:
-           - 4
-           - 6
-         required: false
-         type: int
-      address:
+      created_by:
         description:
-          - Required if state is C(present)
+          - The user creating the journal entry. Omit to use the API token user
         required: false
+        type: int        
+      kind:
+        description:
+          - The kind of journal entry
+        required: false
+        type: str      
+      assigned_object_id:
+        description:
+          - ID of the object to create the journal entry on
+        required: true
+        type: int
+      assigned_object_type:
+        description:
+          - The object type of the model
+        required: true
         type: str
-      prefix:
+      comments:
         description:
-          - |
-            With state C(present), if an interface is given, it will ensure
-            that an IP inside this prefix (and vrf, if given) is attached
-            to this interface. Otherwise, it will get the next available IP
-            of this prefix and attach it.
-            With state C(new), it will force to get the next available IP in
-            this prefix. If an interface is given, it will also force to attach
-            it.
-            Required if state is C(present) or C(new) when no address is given.
-            Unused if an address is specified.
-        required: false
-        type: raw
-      vrf:
-        description:
-          - VRF that IP address is associated with
-        required: false
-        type: raw
-      tenant:
-        description:
-          - The tenant that the device will be assigned to
-        required: false
-        type: raw
-      status:
-        description:
-          - The status of the IP address
-        required: false
-        type: raw
-      role:
-        description:
-          - The role of the IP address
-        choices:
-          - Loopback
-          - Secondary
-          - Anycast
-          - VIP
-          - VRRP
-          - HSRP
-          - GLBP
-          - CARP
-        required: false
+          - The comment associated with the journal entry
+        required: true
         type: str
-      interface:
-        description:
-          - |
-            The name and device of the interface that the IP address should be assigned to
-            Required if state is C(present) and a prefix specified.
-        required: false
-        type: raw
-      description:
-        description:
-          - The description of the interface
-        required: false
-        type: str
-      nat_inside:
-        description:
-          - The inside IP address this IP is assigned to
-        required: false
-        type: raw
-      dns_name:
-        description:
-          - Hostname or FQDN
-        required: false
-        type: str
-      assigned_object:
-        description:
-          - Definition of the assigned object.
-        required: false
-        type: dict
-        suboptions:
-          name:
-            description:
-              - The name of the interface
-            type: str
-            required: False
-          device:
-            description:
-              - The device the interface is attached to.
-            type: str
-            required: False
-          virtual_machine:
-            description:
-              - The virtual machine the interface is attached to.
-            type: str
-            required: False
       tags:
         description:
           - Any tags that the IP address may need to be associated with
@@ -233,31 +158,7 @@ EXAMPLES = r"""
           interface:
             name: GigabitEthernet1
             device: test100
-        state: present
-
-    - name: Attach a new available IP of 192.168.1.0/24 to GigabitEthernet1
-      netbox.netbox.netbox_ip_address:
-        netbox_url: http://netbox.local
-        netbox_token: thisIsMyToken
-        data:
-          prefix: 192.168.1.0/24
-          vrf: Test
-          interface:
-            name: GigabitEthernet1
-            device: test100
-        state: new
-
-    - name: Attach a new available IP of 192.168.1.0/24 to GigabitEthernet1 (NetBox 2.9+)
-      netbox.netbox.netbox_ip_address:
-        netbox_url: http://netbox.local
-        netbox_token: thisIsMyToken
-        data:
-          prefix: 192.168.1.0/24
-          vrf: Test
-          assigned_object:
-            name: GigabitEthernet1
-            device: test100
-        state: new
+        state: present    
 """
 
 RETURN = r"""
@@ -298,8 +199,7 @@ def main():
                     kind=dict(required=False, type="raw"),
                     assigned_object_type=dict(required=False, type="str"),
                     assigned_object_id=dict(required=False, type="str"),
-                    comments=dict(required=False, type="str"),
-                    napalm_args=dict(required=False, type="dict"),
+                    comments=dict(required=False, type="str"),                    
                     tags=dict(required=False, type="list", elements="raw"),
                     custom_fields=dict(required=False, type="dict"),
                 ),
