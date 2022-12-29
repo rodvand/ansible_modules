@@ -286,10 +286,8 @@ def main():
     """
     Main entry point for module execution
     """
-    argument_spec = deepcopy(NETBOX_ARG_SPEC)    
-    argument_spec["state"] = dict(
-        required=False, default="new", choices=["new"]
-    )
+    argument_spec = deepcopy(NETBOX_ARG_SPEC)
+    argument_spec["state"] = dict(required=False, default="new", choices=["new"])
     argument_spec.update(
         dict(
             data=dict(
@@ -307,16 +305,21 @@ def main():
                 ),
             ),
         )
-    )    
+    )
 
-    required_if = [        
-        ("state", "new", ["comments", "assigned_object_type", "assigned_object_id"], True),
-    ]    
+    required_if = [
+        (
+            "state",
+            "new",
+            ["comments", "assigned_object_type", "assigned_object_id"],
+            True,
+        ),
+    ]
 
     module = NetboxAnsibleModule(
         argument_spec=argument_spec,
         supports_check_mode=True,
-        required_if=required_if,        
+        required_if=required_if,
     )
 
     netbox_journal_entry = NetboxExtrasModule(module, NB_JOURNAL_ENTRIES)
