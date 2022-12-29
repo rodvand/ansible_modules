@@ -10,19 +10,18 @@ __metaclass__ = type
 
 DOCUMENTATION = r"""
 ---
-module: netbox_ip_address
-short_description: Creates or removes IP addresses from NetBox
+module: netbox_journal_entry
+short_description: Creates a journal entry
 description:
-  - Creates or removes IP addresses from NetBox
+  - Creates a journal entry in NetBox
 notes:
   - Tags should be defined as a YAML list
   - This should be ran with connection C(local) and hosts C(localhost)
 author:
-  - Mikhail Yohman (@FragmentedPacket)
-  - Anthony Ruhier (@Anthony25)
+  - Martin Rødvand (@rodvand)  
 requirements:
   - pynetbox
-version_added: '0.1.0'
+version_added: '3.11.0'
 extends_documentation_fragment:
   - netbox.netbox.common
 options:
@@ -75,8 +74,8 @@ options:
         C(present) will check if the IP is already created, and return it if
         true. C(new) will force to create it anyway (useful for anycasts, for
         example).
-    choices: [ absent, new, present ]
-    default: present
+    choices: [new]
+    default: new
     type: str
 """
 
@@ -196,10 +195,10 @@ def main():
                 required=True,
                 options=dict(
                     created_by=dict(required=False, type="int"),
-                    kind=dict(required=False, type="raw"),
-                    assigned_object_type=dict(required=False, type="str"),
-                    assigned_object_id=dict(required=False, type="str"),
-                    comments=dict(required=False, type="str"),                    
+                    kind=dict(required=False, type="str"),
+                    assigned_object_type=dict(required=True, type="str"),
+                    assigned_object_id=dict(required=True, type="int"),
+                    comments=dict(required=True, type="str"),                    
                     tags=dict(required=False, type="list", elements="raw"),
                     custom_fields=dict(required=False, type="dict"),
                 ),
