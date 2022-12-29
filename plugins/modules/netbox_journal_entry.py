@@ -198,7 +198,7 @@ def main():
                     kind=dict(required=False, type="str"),
                     assigned_object_type=dict(required=True, type="str"),
                     assigned_object_id=dict(required=True, type="int"),
-                    comments=dict(required=True, type="str"),                    
+                    comments=dict(required=True, type="str"),
                     tags=dict(required=False, type="list", elements="raw"),
                     custom_fields=dict(required=False, type="dict"),
                 ),

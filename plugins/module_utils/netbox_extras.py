@@ -67,7 +67,7 @@ class NetboxExtrasModule(NetboxModule):
             data["color"] = data["color"].lower()
 
         # Handle journal entry
-        if self.state == "new" and endpoint_name == "journal_entry":            
+        if self.state == "new" and endpoint_name == "journal_entry":
             self._handle_state_new(nb_app, nb_endpoint, endpoint_name, data)
         else:
             object_query_params = self._build_query_params(
