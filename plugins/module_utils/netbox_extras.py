@@ -27,7 +27,7 @@ class NetboxExtrasModule(NetboxModule):
     def _handle_state_new(self, nb_app, nb_endpoint, endpoint_name, data):
         if self.state == "new":
             self.nb_object, diff = self._create_netbox_object(nb_endpoint, data)
-            self.result["msg"] = "%s created" % (nb_endpoint)
+            self.result["msg"] = "%s created" % (endpoint_name)
             self.result["changed"] = True
             self.result["diff"] = diff
 
@@ -67,7 +67,7 @@ class NetboxExtrasModule(NetboxModule):
             data["color"] = data["color"].lower()
 
         # Handle journal entry
-        if self.state == "new" and endpoint_name == "journal_entries":
+        if self.state == "new" and endpoint_name == "journal_entry":
             print(f"{nb_app} {nb_endpoint} {endpoint_name} {data}")
             self._handle_state_new(nb_app, nb_endpoint, endpoint_name, data)
         else:

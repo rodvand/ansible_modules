@@ -310,7 +310,7 @@ ENDPOINT_NAME_MAPPING = {
     "export_templates": "export_template",
     "front_ports": "front_port",
     "front_port_templates": "front_port_template",
-    "journal_entries": "journal_entries",
+    "journal_entries": "journal_entry",
     "interfaces": "interface",
     "interface_templates": "interface_template",
     "inventory_items": "inventory_item",
