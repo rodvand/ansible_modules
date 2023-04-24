@@ -1524,11 +1524,11 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             self.api_version = version.parse(openapi["info"]["version"])
             self.allowed_device_query_parameters = [
                 p["name"]
-                for p in openapi["paths"]["/api/dcim/devices/"]["get"]["parameters"]
+                for p in openapi["paths"]["/dcim/devices/"]["get"]["parameters"]
             ]
             self.allowed_vm_query_parameters = [
                 p["name"]
-                for p in openapi["paths"]["/api/virtualization/virtual-machines/"][
+                for p in openapi["paths"]["/virtualization/virtual-machines/"][
                     "get"
                 ]["parameters"]
             ]
