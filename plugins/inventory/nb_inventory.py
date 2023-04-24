@@ -1501,7 +1501,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             if "3.5" in netbox_api_version:
                 endpoint_url = self.api_endpoint + "/api/schema/?format=json"
             else:
-                self.api_endpoint + "/api/docs/?format=openapi"
+                endpoint_url = self.api_endpoint + "/api/docs/?format=openapi"
             openapi = self._fetch_information(endpoint_url)
 
             with open(tmp_file, "w") as file:
