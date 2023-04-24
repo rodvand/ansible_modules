@@ -1496,25 +1496,42 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             openapi = {}
 
         cached_api_version = openapi.get("info", {}).get("version")
-
+        
         if netbox_api_version != cached_api_version:
-            openapi = self._fetch_information(
+            if '3.5' in netbox_api_version:
+                endpoint_url = self.api_endpoint + "/api/schema/?format=json"
+            else:
                 self.api_endpoint + "/api/docs/?format=openapi"
+            openapi = self._fetch_information(
+                endpoint_url                
             )
 
             with open(tmp_file, "w") as file:
                 json.dump(openapi, file)
 
-        self.api_version = version.parse(openapi["info"]["version"])
-        self.allowed_device_query_parameters = [
-            p["name"] for p in openapi["paths"]["/dcim/devices/"]["get"]["parameters"]
-        ]
-        self.allowed_vm_query_parameters = [
-            p["name"]
-            for p in openapi["paths"]["/virtualization/virtual-machines/"]["get"][
-                "parameters"
+        # Just for beta
+        if '3.5' in openapi["info"]["version"]:
+            self.api_version = version.parse("3.5")
+            self.allowed_device_query_parameters = [
+                p["name"] for p in openapi["paths"]["/api/dcim/devices/"]["get"]["parameters"]
             ]
-        ]
+            self.allowed_vm_query_parameters = [
+                p["name"]
+                for p in openapi["paths"]["/api/virtualization/virtual-machines/"]["get"][
+                    "parameters"
+                ]
+            ]
+        else:
+            self.api_version = version.parse(openapi["info"]["version"])
+            self.allowed_device_query_parameters = [
+                p["name"] for p in openapi["paths"]["/api/dcim/devices/"]["get"]["parameters"]
+            ]
+            self.allowed_vm_query_parameters = [
+                p["name"]
+                for p in openapi["paths"]["/api/virtualization/virtual-machines/"]["get"][
+                    "parameters"
+                ]
+            ]
 
     def validate_query_parameter(self, parameter, allowed_query_parameters):
         if not (isinstance(parameter, dict) and len(parameter) == 1):
