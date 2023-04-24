@@ -1528,9 +1528,9 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             ]
             self.allowed_vm_query_parameters = [
                 p["name"]
-                for p in openapi["paths"]["/virtualization/virtual-machines/"][
-                    "get"
-                ]["parameters"]
+                for p in openapi["paths"]["/virtualization/virtual-machines/"]["get"][
+                    "parameters"
+                ]
             ]
 
     def validate_query_parameter(self, parameter, allowed_query_parameters):
