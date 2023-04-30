@@ -1498,7 +1498,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         cached_api_version = openapi.get("info", {}).get("version")
 
         if netbox_api_version != cached_api_version:
-            if "3.5" in netbox_api_version:
+            if version.parse(netbox_api_version) >= "3.5.0":
                 endpoint_url = self.api_endpoint + "/api/schema/?format=json"
             else:
                 endpoint_url = self.api_endpoint + "/api/docs/?format=openapi"
@@ -1507,9 +1507,9 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             with open(tmp_file, "w") as file:
                 json.dump(openapi, file)
 
-        # Just for beta
-        if "3.5" in openapi["info"]["version"]:
-            self.api_version = version.parse("3.5")
+        self.api_version = version.parse(openapi["info"]["version"])
+        
+        if self.api_version >= "3.5.0":
             self.allowed_device_query_parameters = [
                 p["name"]
                 for p in openapi["paths"]["/api/dcim/devices/"]["get"]["parameters"]
@@ -1520,8 +1520,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                     "get"
                 ]["parameters"]
             ]
-        else:
-            self.api_version = version.parse(openapi["info"]["version"])
+        else:            
             self.allowed_device_query_parameters = [
                 p["name"]
                 for p in openapi["paths"]["/dcim/devices/"]["get"]["parameters"]
