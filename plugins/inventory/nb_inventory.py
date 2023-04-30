@@ -1508,7 +1508,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                 json.dump(openapi, file)
 
         self.api_version = version.parse(openapi["info"]["version"])
-        
+
         if self.api_version >= "3.5.0":
             self.allowed_device_query_parameters = [
                 p["name"]
@@ -1520,7 +1520,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                     "get"
                 ]["parameters"]
             ]
-        else:            
+        else:
             self.allowed_device_query_parameters = [
                 p["name"]
                 for p in openapi["paths"]["/dcim/devices/"]["get"]["parameters"]
