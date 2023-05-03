@@ -1482,7 +1482,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
     def fetch_api_docs(self):
         try:
             status = self._fetch_information(self.api_endpoint + "/api/status")
-            netbox_api_version = ".".join(status["netbox-version"].split(".")[:2])            
+            netbox_api_version = ".".join(status["netbox-version"].split(".")[:2])
         except Exception:
             netbox_api_version = 0
 
