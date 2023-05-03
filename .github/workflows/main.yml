@@ -139,8 +139,10 @@ jobs:
               image: netboxcommunity/netbox:v3.5
               ports:
                 - 32768:8080
+            healthcheck:
+              disable: true
           EOF
-          docker-compose up
+          docker-compose up -d --quiet-pull
           docker container ls
           cd ..
         if: matrix.VERSION == 'v3.5'
