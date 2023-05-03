@@ -136,7 +136,7 @@ jobs:
           version: '3.4'
           services:
             netbox:
-              image: netboxcommunity/netbox:v3.5
+              image: netboxcommunity/netbox:v3.5-2.6.1
               ports:
                 - 32768:8080
           EOF
