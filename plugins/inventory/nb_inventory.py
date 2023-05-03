@@ -1482,7 +1482,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
     def fetch_api_docs(self):
         try:
             status = self._fetch_information(self.api_endpoint + "/api/status")
-            netbox_api_version = ".".join(status["netbox-version"].split(".")[:2])
+            netbox_api_version = ".".join(status["netbox-version"].split(".")[:2])            
         except Exception:
             netbox_api_version = 0
 
@@ -1507,7 +1507,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             with open(tmp_file, "w") as file:
                 json.dump(openapi, file)
 
-        self.api_version = version.parse(openapi["info"]["version"])
+        self.api_version = version.parse(netbox_api_version)
 
         if self.api_version >= version.parse("3.5.0"):
             self.allowed_device_query_parameters = [
