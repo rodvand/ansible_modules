@@ -140,7 +140,7 @@ jobs:
               ports:
                 - 32768:8080
           EOF
-          docker-compose up -d
+          docker-compose up
           docker container ls
           cd ..
         if: matrix.VERSION == 'v3.5'
