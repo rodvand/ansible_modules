@@ -127,7 +127,6 @@ jobs:
       - name: Clone & Start netbox-docker containers - 3.5
         env:
           VERSION: ${{ matrix.VERSION }}
-          ALLOWED_HOSTS: '*'
         run: |
           cd ..
           git clone https://github.com/netbox-community/netbox-docker.git
@@ -141,7 +140,7 @@ jobs:
               ports:
                 - 32768:8080
           EOF
-          docker-compose up -d --quiet-pull
+          docker-compose up -d
           docker container ls
           cd ..
         if: matrix.VERSION == 'v3.5'
