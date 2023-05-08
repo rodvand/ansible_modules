@@ -140,15 +140,7 @@ jobs:
                 - 32768:8080
               image: netboxcommunity/netbox:$VERSION
               healthcheck:
-                disable: true
-            netbox-worker:
-              image: netboxcommunity/netbox:$VERSION
-              healthcheck:
-                disable: true
-            netbox-housekeeping:
-              image: netboxcommunity/netbox:$VERSION
-              healthcheck:
-                disable: true
+                start_period: 300s           
           EOF
           docker-compose up -d --quiet-pull
           docker container ls
