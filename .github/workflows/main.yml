@@ -136,9 +136,19 @@ jobs:
           version: '3.4'
           services:
             netbox:
-              image: netboxcommunity/netbox:v3.5
               ports:
-                - 32768:8080              
+                - 32768:8080
+              image: netboxcommunity/netbox:$VERSION
+              healthcheck:
+                disable: true
+            netbox-worker:
+              image: netboxcommunity/netbox:$VERSION
+              healthcheck:
+                disable: true
+            netbox-housekeeping:
+              image: netboxcommunity/netbox:$VERSION
+              healthcheck:
+                disable: true
           EOF
           docker-compose up -d --quiet-pull
           docker container ls
