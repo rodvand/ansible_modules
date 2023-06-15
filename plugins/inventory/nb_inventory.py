@@ -351,6 +351,7 @@ from typing import Iterable
 from itertools import chain
 from collections import defaultdict
 from ipaddress import ip_interface
+from zoneinfo import ZoneInfo
 
 
 from ansible.constants import DEFAULT_LOCAL_TMP
@@ -369,13 +370,6 @@ except ImportError as imp_exc:
     PACKAGING_IMPORT_ERROR = imp_exc
 else:
     PACKAGING_IMPORT_ERROR = None
-
-try:
-    import pytz
-except ImportError as imp_exc:
-    PYTZ_IMPORT_ERROR = imp_exc
-else:
-    PYTZ_IMPORT_ERROR = None
 
 
 class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
@@ -1035,7 +1029,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             # Will fail if site does not have a time_zone defined in NetBox
             try:
                 utc = round(
-                    datetime.datetime.now(pytz.timezone(site["time_zone"]))
+                    datetime.datetime.now(ZoneInfo.timezone(site["time_zone"]))
                     .utcoffset()
                     .total_seconds()
                     / 60
@@ -1883,14 +1877,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
 
         return master.get("id", None)
 
-    def main(self):
-        # Check if pytz lib is install, and give error if not
-        if PYTZ_IMPORT_ERROR:
-            raise_from(
-                AnsibleError("pytz must be installed to use this plugin"),
-                PYTZ_IMPORT_ERROR,
-            )
-
+    def main(self):        
         # Get info about the API - version, allowed query parameters
         self.fetch_api_docs()
 
