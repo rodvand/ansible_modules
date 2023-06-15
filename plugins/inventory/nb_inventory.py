@@ -1877,7 +1877,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
 
         return master.get("id", None)
 
-    def main(self):        
+    def main(self):
         # Get info about the API - version, allowed query parameters
         self.fetch_api_docs()
 
