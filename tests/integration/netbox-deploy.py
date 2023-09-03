@@ -298,45 +298,87 @@ test_rack_site2 = nb.dcim.racks.get(name="Test Rack Site 2")
 
 
 ## Create Devices
-devices = [
-    {
-        "name": "test100",
-        "device_type": cisco_test.id,
-        "device_role": core_switch.id,
-        "site": test_site.id,
-        "local_context_data": {"ntp_servers": ["pool.ntp.org"]},
-        "serial": "FAB01234567",
-        "asset_tag": "123456789",
-    },
-    {
-        "name": "TestDeviceR1",
-        "device_type": cisco_test.id,
-        "device_role": core_switch.id,
-        "site": test_site.id,
-        "rack": test_rack.id,
-        "serial": "FAB12345678",
-    },
-    {
-        "name": "R1-Device",
-        "device_type": cisco_test.id,
-        "device_role": core_switch.id,
-        "site": test_site2.id,
-        "rack": test_rack_site2.id,
-        "asset_tag": "345678901",
-    },
-    {
-        "name": "Test Nexus One",
-        "device_type": nexus_parent.id,
-        "device_role": core_switch.id,
-        "site": test_site.id,
-    },
-    {
-        "name": "Test Nexus Child One",
-        "device_type": nexus_child.id,
-        "device_role": core_switch.id,
-        "site": test_site.id,
-    },
-]
+if nb_version >= version.parse("3.6"):
+        devices = [
+        {
+            "name": "test100",
+            "device_type": cisco_test.id,
+            "role": core_switch.id,
+            "site": test_site.id,
+            "local_context_data": {"ntp_servers": ["pool.ntp.org"]},
+            "serial": "FAB01234567",
+            "asset_tag": "123456789",
+        },
+        {
+            "name": "TestDeviceR1",
+            "device_type": cisco_test.id,
+            "role": core_switch.id,
+            "site": test_site.id,
+            "rack": test_rack.id,
+            "serial": "FAB12345678",
+        },
+        {
+            "name": "R1-Device",
+            "device_type": cisco_test.id,
+            "role": core_switch.id,
+            "site": test_site2.id,
+            "rack": test_rack_site2.id,
+            "asset_tag": "345678901",
+        },
+        {
+            "name": "Test Nexus One",
+            "device_type": nexus_parent.id,
+            "role": core_switch.id,
+            "site": test_site.id,
+        },
+        {
+            "name": "Test Nexus Child One",
+            "device_type": nexus_child.id,
+            "role": core_switch.id,
+            "site": test_site.id,
+        },
+    ]
+
+else:
+    devices = [
+        {
+            "name": "test100",
+            "device_type": cisco_test.id,
+            "device_role": core_switch.id,
+            "site": test_site.id,
+            "local_context_data": {"ntp_servers": ["pool.ntp.org"]},
+            "serial": "FAB01234567",
+            "asset_tag": "123456789",
+        },
+        {
+            "name": "TestDeviceR1",
+            "device_type": cisco_test.id,
+            "device_role": core_switch.id,
+            "site": test_site.id,
+            "rack": test_rack.id,
+            "serial": "FAB12345678",
+        },
+        {
+            "name": "R1-Device",
+            "device_type": cisco_test.id,
+            "device_role": core_switch.id,
+            "site": test_site2.id,
+            "rack": test_rack_site2.id,
+            "asset_tag": "345678901",
+        },
+        {
+            "name": "Test Nexus One",
+            "device_type": nexus_parent.id,
+            "device_role": core_switch.id,
+            "site": test_site.id,
+        },
+        {
+            "name": "Test Nexus Child One",
+            "device_type": nexus_child.id,
+            "device_role": core_switch.id,
+            "site": test_site.id,
+        },
+    ]
 
 ## Add some locations for 2.11+
 if nb_version >= version.parse("2.11"):
