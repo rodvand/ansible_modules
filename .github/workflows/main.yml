@@ -75,13 +75,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - VERSION: "v3.3"
-            NETBOX_DOCKER_VERSION: 2.3.0
+        include:          
           - VERSION: "v3.4"
             NETBOX_DOCKER_VERSION: 2.5.3
           - VERSION: "v3.5"
             NETBOX_DOCKER_VERSION: 2.6.1
+          - VERSION: "v3.6"
+            NETBOX_DOCKER_VERSION: 2.7.0
         # If we want to integration test wiht all supported Python:
         #python-version: ["3.9", "3.10", "3.11"]
 
