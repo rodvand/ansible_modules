@@ -299,7 +299,7 @@ test_rack_site2 = nb.dcim.racks.get(name="Test Rack Site 2")
 
 ## Create Devices
 if nb_version >= version.parse("3.6"):
-        devices = [
+    devices = [
         {
             "name": "test100",
             "device_type": cisco_test.id,
