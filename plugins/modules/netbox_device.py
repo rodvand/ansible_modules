@@ -45,6 +45,11 @@ options:
           - Required if I(state=present) and the device does not exist yet
         required: false
         type: raw
+      role:
+        description:
+          - Required if I(state=present) and the device does not exist yet
+        required: false
+        type: raw
       tenant:
         description:
           - The tenant that the device will be assigned to
@@ -277,6 +282,7 @@ def main():
                     name=dict(required=True, type="str"),
                     device_type=dict(required=False, type="raw"),
                     device_role=dict(required=False, type="raw"),
+                    role=dict(required=False, type="raw"),
                     tenant=dict(required=False, type="raw"),
                     platform=dict(required=False, type="raw"),
                     serial=dict(required=False, type="str"),
