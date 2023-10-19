@@ -831,3 +831,8 @@ releases:
         name: netbox_config_template
         namesapce: ''
     release_date: '2023-10-18'
+  3.15.1:
+    changes:
+      minor_changes:
+        - Fix missing documentation
+    release_date: '2023-10-19'
