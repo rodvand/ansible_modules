@@ -5,6 +5,14 @@ NetBox.NetBox Release Notes
 .. contents:: Topics
 
 
+v3.15.1
+=======
+
+Minor Changes
+-------------
+
+- Fix missing documentation
+
 v3.15.0
 =======
 
