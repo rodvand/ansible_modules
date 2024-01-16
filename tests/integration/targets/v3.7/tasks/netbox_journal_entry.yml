@@ -17,7 +17,7 @@
   register: test_one
 
 - name: "JOURNAL_ENTRY 1: ASSERT - Creation"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_one is changed
       - test_one['diff']['before']['state'] == "absent"

@@ -15,7 +15,7 @@
   register: test_one
 
 - name: "VLAN 1: ASSERT - Necessary info creation"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_one is changed
       - test_one['diff']['before']['state'] == "absent"
@@ -35,7 +35,7 @@
   register: test_two
 
 - name: "VLAN 2: ASSERT - Create duplicate"
-  assert:
+  ansible.builtin.assert:
     that:
       - not test_two['changed']
       - test_two['vlan']['name'] == "Test VLAN 500"
@@ -56,7 +56,7 @@
   register: test_three
 
 - name: "VLAN 3: ASSERT - Create VLAN with same name, but different site"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_three is changed
       - test_three['diff']['before']['state'] == "absent"
@@ -86,7 +86,7 @@
   register: test_four
 
 - name: "VLAN 4: ASSERT - Updated"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_four is changed
       - test_four['diff']['after']['status'] == "reserved"
@@ -122,7 +122,7 @@
   register: idempotent_vlan_group
 
 - name: "VLAN: ASSERT - IDEMPOTENT WITH VLAN_GROUP"
-  assert:
+  ansible.builtin.assert:
     that:
       - idempotent_vlan_group is not changed
 
@@ -140,7 +140,7 @@
   register: new_vlan_group
 
 - name: "VLAN: ASSERT - Create VLAN with same name, but different vlan_group"
-  assert:
+  ansible.builtin.assert:
     that:
       - new_vlan_group is changed
       - new_vlan_group['diff']['before']['state'] == "absent"
@@ -162,7 +162,7 @@
   register: test_five
 
 - name: "VLAN 5: ASSERT - Delete more than one result"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_five is failed
       - test_five['msg'] == "More than one result returned for Test VLAN 500"
@@ -179,7 +179,7 @@
   register: test_six
 
 - name: "VLAN 6: ASSERT - Delete"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_six is changed
       - test_six['vlan']['name'] == "Test VLAN 500"

@@ -15,7 +15,7 @@
   register: test_one
 
 - name: "1 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_one is changed
       - test_one['msg'] == "interface_template 10GBASE-T (10GE) created"
@@ -37,7 +37,7 @@
   register: test_two
 
 - name: "2 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_two is changed
       - test_two['msg'] == "interface_template 10GBASE-T (10GE) updated"
@@ -58,7 +58,7 @@
   register: test_three
 
 - name: "3 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_three is changed
       - test_three['msg'] == "interface_template 10GBASE-T (10GE) deleted"
@@ -78,7 +78,7 @@
   register: test_four
 
 - name: "4 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_four is changed
       - test_four['msg'] == "interface_template port channel template created"
@@ -100,7 +100,7 @@
   register: test_five
 
 - name: "5 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - not test_five['changed']
       - test_five['msg'] == "interface_template port channel template already exists"

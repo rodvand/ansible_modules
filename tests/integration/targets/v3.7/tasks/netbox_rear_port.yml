@@ -19,7 +19,7 @@
   register: test_one
 
 - name: "REAR_PORT 1: ASSERT - Necessary info creation"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_one is changed
       - test_one['diff']['before']['state'] == "absent"
@@ -41,7 +41,7 @@
   register: test_two
 
 - name: "REAR_PORT 2: ASSERT - Create duplicate"
-  assert:
+  ansible.builtin.assert:
     that:
       - not test_two['changed']
       - test_two['rear_port']['name'] == "Rear Port"
@@ -63,7 +63,7 @@
   register: test_three
 
 - name: "REAR_PORT 3: ASSERT - Update Rear Port with other fields"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_three is changed
       - test_three['diff']['after']['positions'] == 5
@@ -87,7 +87,7 @@
   register: test_four
 
 - name: "REAR_PORT 4: ASSERT - Create Rear Port for Delete Test"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_four is changed
       - test_four['diff']['before']['state'] == "absent"
@@ -109,7 +109,7 @@
   register: test_five
 
 - name: "REAR_PORT 5: ASSERT - Delete Rear Port"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_five is changed
       - test_five['diff']['before']['state'] == "present"
@@ -128,7 +128,7 @@
   register: test_six
 
 - name: "REAR_PORT 6: ASSERT - Create second Rear Port"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_six is changed
       - test_six['diff']['before']['state'] == "absent"
