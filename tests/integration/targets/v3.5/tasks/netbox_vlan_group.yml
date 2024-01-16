@@ -219,7 +219,7 @@
       - results['msg'] == "vlan_group VLAN Group Site Group created"
 
 # Commented out due to invalid content type being reported back by API
-#- name: "VLAN_GROUP 11: Necessary info creation - scope_type: virtualization.cluster"
+# - name: "VLAN_GROUP 11: Necessary info creation - scope_type: virtualization.cluster"
 #  netbox.netbox.netbox_vlan_group:
 #    netbox_url: http://localhost:32768
 #    netbox_token: 0123456789abcdef0123456789abcdef01234567
@@ -230,7 +230,7 @@
 #    state: present
 #  register: results
 
-#- name: "VLAN_GROUP 11: ASSERT - Necessary info creation - scope_type: virtualization.cluster"
+# - name: "VLAN_GROUP 11: ASSERT - Necessary info creation - scope_type: virtualization.cluster"
 #  ansible.builtin.assert:
 #    that:
 #      - results is changed
@@ -242,7 +242,7 @@
 #      - results['vlan_group']['scope_id'] == 1
 #      - results['msg'] == "vlan_group VLAN Group Cluster created"
 #
-#- name: "VLAN_GROUP 12: Necessary info creation - scope_type: virtualization.clustergroup"
+# - name: "VLAN_GROUP 12: Necessary info creation - scope_type: virtualization.clustergroup"
 #  netbox.netbox.netbox_vlan_group:
 #    netbox_url: http://localhost:32768
 #    netbox_token: 0123456789abcdef0123456789abcdef01234567
@@ -253,7 +253,7 @@
 #    state: present
 #  register: results
 #
-#- name: "VLAN_GROUP 12: ASSERT - Necessary info creation - scope_type: virtualization.clustergroup"
+# - name: "VLAN_GROUP 12: ASSERT - Necessary info creation - scope_type: virtualization.clustergroup"
 #  ansible.builtin.assert:
 #    that:
 #      - results is changed

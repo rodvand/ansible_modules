@@ -280,7 +280,7 @@
       description: "Updated child interface from parent device - test"
       type: 1000Base-T (1GE)
     state: present
-  ignore_errors: yes
+  ignore_errors: true
   register: test_eleven
 
 - name: "11 - ASSERT"

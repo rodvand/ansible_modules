@@ -158,7 +158,7 @@
     data:
       name: "Test VLAN 500"
     state: absent
-  ignore_errors: yes
+  ignore_errors: true
   register: test_five
 
 - name: "VLAN 5: ASSERT - Delete more than one result"

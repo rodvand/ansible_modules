@@ -76,7 +76,7 @@
     data:
       name: "VLAN Group One"
     state: present
-  ignore_errors: yes
+  ignore_errors: true
   register: results
 
 - name: "VLAN_GROUP 4: ASSERT - Create with same name, different site"

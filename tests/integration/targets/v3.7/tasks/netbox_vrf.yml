@@ -105,7 +105,7 @@
     data:
       name: "Test VRF One"
     state: absent
-  ignore_errors: yes
+  ignore_errors: true
   register: test_five
 
 - name: "VRF 5: ASSERT - Delete more than one result"

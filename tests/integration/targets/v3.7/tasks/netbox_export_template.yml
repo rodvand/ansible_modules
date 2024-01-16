@@ -61,7 +61,7 @@
       description: Export Devices
       template_code: !unsafe >-
         {% for obj in queryset %}{{ obj.name }}{% endfor %}
-      as_attachment: no
+      as_attachment: false
     state: present
   register: test_three
 

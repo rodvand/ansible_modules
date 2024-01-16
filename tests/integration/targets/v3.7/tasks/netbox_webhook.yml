@@ -12,7 +12,7 @@
       content_types:
         - "dcim.device"
       name: Example Webhook
-      type_create: yes
+      type_create: true
       payload_url: https://payload.url
       body_template: !unsafe >-
         {{ data }}
@@ -39,7 +39,7 @@
       content_types:
         - "dcim.device"
       name: Example Webhook
-      type_create: yes
+      type_create: true
       payload_url: https://payload.url
       body_template: !unsafe >-
         {{ data }}
@@ -60,8 +60,8 @@
     data:
       content_types:
         - "dcim.device"
-      type_create: yes
-      type_delete: yes
+      type_create: true
+      type_delete: true
       name: Example Webhook
       payload_url: https://payload.url
       body_template: !unsafe >-

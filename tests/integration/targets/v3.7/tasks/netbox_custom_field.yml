@@ -56,7 +56,7 @@
         - "dcim.device"
       name: "A_CustomField"
       description: "Added a description"
-      required: yes
+      required: true
     state: present
   register: test_three
 
@@ -78,7 +78,7 @@
         - "virtualization.virtualmachine"
       name: "A_CustomField"
       description: "Added a description"
-      required: yes
+      required: true
     state: present
   register: test_four
 

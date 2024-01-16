@@ -131,7 +131,7 @@
       parent: 10.156.0.0/19
       prefix_length: 24
     state: present
-    first_available: yes
+    first_available: true
   register: test_six
 
 - name: "6 - ASSERT"
@@ -166,7 +166,7 @@
       parent: 10.156.0.0/19
       prefix_length: 24
     state: present
-    first_available: yes
+    first_available: true
   register: test_eight
 
 - name: "8 - ASSERT"
@@ -210,7 +210,7 @@
       vrf: Test VRF
       site: Test Site
     state: present
-    first_available: yes
+    first_available: true
   register: test_ten
 
 - name: "10 - ASSERT"
@@ -232,7 +232,7 @@
       parent: 10.156.0.0/19
       prefix_length: 24
     state: present
-    first_available: yes
+    first_available: true
   register: test_eleven
 
 - name: "11 - ASSERT"

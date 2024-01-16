@@ -199,7 +199,7 @@
       serial: "FXS10001"
       asset_tag: "1234"
     state: present
-  ignore_errors: yes
+  ignore_errors: true
   register: test_seven
 
 - name: "7 - ASSERT"

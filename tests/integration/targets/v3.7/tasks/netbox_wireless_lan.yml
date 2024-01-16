@@ -99,5 +99,5 @@
       - test_five['wireless_lan']['auth_type'] == "wpa-enterprise"
       - test_five['wireless_lan']['auth_cipher'] == "aes"
       - test_five['wireless_lan']['auth_psk'] == "psk123456"
-      #- test_five['wireless_lan']['tags'] | length == 3
+      # - test_five['wireless_lan']['tags'] | length == 3
       - test_five['msg'] == "wireless_lan Wireless Network One created"

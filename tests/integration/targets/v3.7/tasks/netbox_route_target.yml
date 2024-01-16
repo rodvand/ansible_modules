@@ -11,7 +11,7 @@
       tags:
         - first
         - second
-  check_mode: yes
+  check_mode: true
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_ADD: (ASSERT) Check Mode - Add all fields except description"
@@ -84,7 +84,7 @@
       tags:
         - first
         - second
-  check_mode: yes
+  check_mode: true
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_UPDATE: (ASSERT) Check Mode - Update description"
@@ -158,7 +158,7 @@
     data:
       name: "65000:65001"
     state: absent
-  check_mode: yes
+  check_mode: true
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_DELETE: (ASSERT) Check Mode - Delete route target"
