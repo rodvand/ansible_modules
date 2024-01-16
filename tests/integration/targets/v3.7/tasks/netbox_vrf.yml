@@ -65,7 +65,7 @@
     data:
       name: "Test VRF One"
       rd: "65001:1"
-      enforce_unique: False
+      enforce_unique: false
       tenant: "Test Tenant"
       description: Updated description
       import_targets:

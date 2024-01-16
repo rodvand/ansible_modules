@@ -254,7 +254,7 @@
       name: Ethernet2/2
       description: "Updated child interface from parent device"
       type: 1000Base-T (1GE)
-    update_vc_child: True
+    update_vc_child: true
     state: present
   register: test_ten
 

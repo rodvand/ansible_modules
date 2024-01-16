@@ -54,7 +54,7 @@
       serial: "1234"
       asset_tag: "1234"
       description: "New SFP"
-      discovered: True
+      discovered: true
       tags:
         - "Schnozzberry"
     state: present

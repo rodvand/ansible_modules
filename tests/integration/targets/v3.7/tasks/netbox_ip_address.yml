@@ -81,7 +81,7 @@
       - test_four['ip_address']['address'] == "192.168.1.20/30"
 
 # Enforce uniqueness in NetBox 3.7
-#- name: "5 - Create IP in global VRF - 192.168.1.20/30 - State: New"
+# - name: "5 - Create IP in global VRF - 192.168.1.20/30 - State: New"
 #  netbox.netbox.netbox_ip_address:
 #    netbox_url: http://localhost:32768
 #    netbox_token: 0123456789abcdef0123456789abcdef01234567
@@ -90,7 +90,7 @@
 #    state: new
 #  register: test_five
 
-#- name: "5 - ASSERT"
+# - name: "5 - ASSERT"
 #  ansible.builtin.assert:
 #    that:
 #      - test_five is changed
@@ -308,7 +308,7 @@
       - test_fourteen['ip_address']['assigned_object_id'] == 1
 
 # Enforce uniqueness in NetBox 3.7
-#- name: "15 - Create same IP address on Eth0 - test101-vm - State: present"
+# - name: "15 - Create same IP address on Eth0 - test101-vm - State: present"
 #  netbox.netbox.netbox_ip_address:
 #    netbox_url: http://localhost:32768
 #    netbox_token: 0123456789abcdef0123456789abcdef01234567
@@ -321,7 +321,7 @@
 #    state: "present"
 #  register: test_fifteen
 
-#- name: "15 - ASSERT"
+# - name: "15 - ASSERT"
 #  ansible.builtin.assert:
 #    that:
 #      - test_fifteen is changed
