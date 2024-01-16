@@ -20,7 +20,7 @@
   register: test_one
 
 - name: "FRONT_PORT 1: ASSERT - Necessary info creation"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_one is changed
       - test_one['diff']['before']['state'] == "absent"
@@ -44,7 +44,7 @@
   register: test_two
 
 - name: "FRONT_PORT 2: ASSERT - Create duplicate"
-  assert:
+  ansible.builtin.assert:
     that:
       - not test_two['changed']
       - test_two['front_port']['name'] == "Front Port"
@@ -68,7 +68,7 @@
   register: test_three
 
 - name: "FRONT_PORT 3: ASSERT - Update Front Port with other fields"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_three is changed
       - test_three['diff']['after']['rear_port_position'] == 5
@@ -94,7 +94,7 @@
   register: test_four
 
 - name: "FRONT_PORT 4: ASSERT - Create Front Port for Delete Test"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_four is changed
       - test_four['diff']['before']['state'] == "absent"
@@ -118,7 +118,7 @@
   register: test_five
 
 - name: "FRONT_PORT 5: ASSERT - Delete Front Port"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_five is changed
       - test_five['diff']['before']['state'] == "present"
@@ -140,7 +140,7 @@
   register: test_six
 
 - name: "FRONT_PORT 6: ASSERT - Create duplicate with rear_port dictionary"
-  assert:
+  ansible.builtin.assert:
     that:
       - not test_six['changed']
       - test_six['front_port']['name'] == "Front Port"

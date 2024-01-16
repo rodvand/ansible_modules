@@ -16,7 +16,7 @@
   register: test_one
 
 - name: "TAG 1: ASSERT - Necessary info creation"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_one is changed
       - test_one['diff']['before']['state'] == "absent"
@@ -39,7 +39,7 @@
   register: test_two
 
 - name: "TAG 2: ASSERT - Create duplicate"
-  assert:
+  ansible.builtin.assert:
     that:
       - not test_two['changed']
       - test_two['tags']['name'] == "Test Tag 1"
@@ -57,7 +57,7 @@
   register: test_three
 
 - name: "TAG 3: ASSERT - Updated"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_three is changed
       - test_three['diff']['after']['color'] == "00ff00"
@@ -77,7 +77,7 @@
   register: test_four
 
 - name: "TAG 4: ASSERT - Delete"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_four is changed
       - test_four['diff']['after']['state'] == "absent"
@@ -98,7 +98,7 @@
   register: test_five
 
 - name: "TAG 5: ASSERT - Necessary info creation"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_five is changed
       - test_five['diff']['before']['state'] == "absent"

@@ -29,7 +29,7 @@
   register: test_service_create
 
 - name: "NETBOX_SERVICE ASSERT - Create"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_service_create is changed
       - test_service_create['services']['name'] == "node-exporter"
@@ -52,7 +52,7 @@
   register: test_service_idempotence
 
 - name: "NETBOX_SERVICE ASSERT - Not changed"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_service_idempotence['services']['name'] == "node-exporter"
       - test_service_idempotence['services']['ports'] == [9100]
@@ -76,7 +76,7 @@
   register: test_service_update
 
 - name: "NETBOX_SERVICE ASSERT - Service has been updated"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_service_update is changed
       - test_service_update['diff']['after']['tags'][0] == 4
@@ -96,7 +96,7 @@
   register: test_service_protocol
 
 - name: "NETBOX_SERVICE ASSERT - Different protocol - Create"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_service_protocol is changed
       - test_service_protocol['diff']['after']['state'] == "present"
@@ -119,7 +119,7 @@
   register: test_service_delete
 
 - name: "NETBOX_SERVICE ASSERT - Service has been deleted"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_service_delete is changed
       - test_service_delete['diff']['after']['state'] == "absent"
@@ -141,7 +141,7 @@
   register: test_service_ip_addresses
 
 - name: "NETBOX_SERVICE ASSERT - Service has been created with IP address"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_service_ip_addresses is changed
       - test_service_ip_addresses['diff']['after']['state'] == "present"
@@ -167,7 +167,7 @@
   register: test_service_required_one_of
 
 - name: "NETBOX_SERVICE ASSERT - Failed due to missing arguments"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_service_required_one_of is failed
       - 'test_service_required_one_of["msg"] == "one of the following is required: device, virtual_machine"'
@@ -185,7 +185,7 @@
   register: test_service_create_vm
 
 - name: "NETBOX_SERVICE ASSERT - Create"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_service_create_vm is changed
       - test_service_create_vm['services']['name'] == "node-exporter"

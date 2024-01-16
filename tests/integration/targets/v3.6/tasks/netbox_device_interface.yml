@@ -12,7 +12,7 @@
   register: test_one
 
 - name: "1 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_one is changed
       - test_one['msg'] == "interface GigabitEthernet3 created"
@@ -33,7 +33,7 @@
   register: test_two
 
 - name: "2 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_two is changed
       - test_two['msg'] == "interface GigabitEthernet3 updated"
@@ -55,7 +55,7 @@
   register: test_three
 
 - name: "3 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_three is changed
       - test_three['msg'] == "interface GigabitEthernet3 deleted"
@@ -77,7 +77,7 @@
   register: test_four
 
 - name: "4 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_four is changed
       - test_four['msg'] == "interface port-channel1 created"
@@ -109,7 +109,7 @@
   register: test_five
 
 - name: "5 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_five is changed
       - test_five['msg'] == "interface GigabitEthernet3 created"
@@ -148,7 +148,7 @@
   register: test_six
 
 - name: "6 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_six is changed
       - test_six['msg'] == "interface GigabitEthernet21 created"
@@ -174,7 +174,7 @@
   register: test_seven
 
 - name: "7 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - not test_seven['changed']
       - test_seven['msg'] == "interface GigabitEthernet1 already exists"
@@ -207,7 +207,7 @@
   register: test_eight
 
 - name: "8 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_eight is changed
       - test_eight['msg'] == "interface GigabitEthernet4 created"
@@ -234,7 +234,7 @@
   register: test_nine
 
 - name: "9 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_nine is changed
       - test_nine['msg'] == "interface Ethernet2/2 created"
@@ -259,7 +259,7 @@
   register: test_ten
 
 - name: "10 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_ten is changed
       - test_ten['msg'] == "interface Ethernet2/2 updated"
@@ -284,7 +284,7 @@
   register: test_eleven
 
 - name: "11 - ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_eleven is failed
       - test_eleven['msg'] == "Must set update_vc_child to True to allow child device interface modification"
@@ -301,7 +301,7 @@
   register: test_twelve
 
 - name: "12- ASSERT"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_twelve is changed
       - test_twelve['msg'] == "interface GigabitEthernet5 created"

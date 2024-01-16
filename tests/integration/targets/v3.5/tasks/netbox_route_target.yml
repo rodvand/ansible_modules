@@ -15,7 +15,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_ADD: (ASSERT) Check Mode - Add all fields except description"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is changed
       - test_results['route_target']['name'] == "65000:65001"
@@ -39,7 +39,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_ADD: (ASSERT) Add all fields except description"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is changed
       - test_results['route_target']['name'] == "65000:65001"
@@ -63,7 +63,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_ADD_IDEM: (IDEMPOTENT) Add all fields except description"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is not changed
       - test_results['route_target']['name'] == "65000:65001"
@@ -88,7 +88,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_UPDATE: (ASSERT) Check Mode - Update description"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is changed
       - test_results['route_target']['name'] == "65000:65001"
@@ -114,7 +114,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_UPDATE: (ASSERT) Update description"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is changed
       - test_results['route_target']['name'] == "65000:65001"
@@ -140,7 +140,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_UPDATE_IDEM: (IDEMPOTENT) Update description"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is not changed
       - test_results['route_target']['name'] == "65000:65001"
@@ -162,7 +162,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_DELETE: (ASSERT) Check Mode - Delete route target"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is changed
       - test_results['diff']['after']['state'] == "absent"
@@ -180,7 +180,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_DELETE: (ASSERT) Delete route target"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is changed
       - test_results['diff']['after']['state'] == "absent"
@@ -198,7 +198,7 @@
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_DELETE_IDEM: (IDEMPOTENT) Delete route target"
-  assert:
+  ansible.builtin.assert:
     that:
       - test_results is not changed
       - test_results['msg'] == "route_target 65000:65001 already absent"
