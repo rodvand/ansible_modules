@@ -7,10 +7,10 @@
 - name: "RACK_ROLE 1: Necessary info creation"
   netbox.netbox.netbox_rack_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Rack Role
-      color: "ffffff"
+      color: ffffff
     state: present
   register: test_one
 
@@ -28,7 +28,7 @@
 - name: "RACK_ROLE 2: Create duplicate"
   netbox.netbox.netbox_rack_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Rack Role
     state: present
@@ -46,11 +46,11 @@
 - name: "RACK_ROLE 3: Update"
   netbox.netbox.netbox_rack_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Rack Role
       color: "003EFF"
-      description: "This is a Rack Role test"
+      description: This is a Rack Role test
     state: present
   register: test_three
 
@@ -68,7 +68,7 @@
 - name: "RACK_ROLE 4: Delete"
   netbox.netbox.netbox_rack_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Rack Role
     state: absent

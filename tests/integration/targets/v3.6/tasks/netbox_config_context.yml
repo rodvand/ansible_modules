@@ -7,11 +7,11 @@
 - name: "CONFIG_CONTEXT 1: Necessary info creation"
   netbox.netbox.netbox_config_context:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_context"
-      description: "Test context"
-      data: "{ \"testkey\": { \"testsubkey\": [ \"testvaule\" ] } }"
+      name: test_context
+      description: Test context
+      data: '{ "testkey": { "testsubkey": [ "testvaule" ] } }'
     state: present
   register: test_one
 
@@ -31,11 +31,11 @@
 - name: "CONFIG_CONTEXT 2: Create duplicate"
   netbox.netbox.netbox_config_context:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_context"
-      description: "Test context"
-      data: "{ \"testkey\": { \"testsubkey\": [ \"testvaule\" ] } }"
+      name: test_context
+      description: Test context
+      data: '{ "testkey": { "testsubkey": [ "testvaule" ] } }'
     state: present
   register: test_two
 
@@ -49,11 +49,11 @@
 - name: "CONFIG_CONTEXT 3: Update data and attach to site"
   netbox.netbox.netbox_config_context:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_context"
-      description: "Updated test context"
-      data: "{ \"testkey\": { \"testsubkey\": [ \"updatedvaule\" ] } }"
+      name: test_context
+      description: Updated test context
+      data: '{ "testkey": { "testsubkey": [ "updatedvaule" ] } }'
       weight: 100
       sites: [test-site]
     state: present
@@ -73,10 +73,10 @@
 - name: "CONFIG_CONTEXT 4: Detach from site"
   netbox.netbox.netbox_config_context:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_context"
-      data: "{ \"testkey\": { \"testsubkey\": [ \"updatedvaule\" ] } }"
+      name: test_context
+      data: '{ "testkey": { "testsubkey": [ "updatedvaule" ] } }'
       sites: []
     state: present
   register: test_four
@@ -92,9 +92,9 @@
 - name: "CONFIG_CONTEXT 5: Delete"
   netbox.netbox.netbox_config_context:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_context"
+      name: test_context
     state: absent
   register: test_five
 

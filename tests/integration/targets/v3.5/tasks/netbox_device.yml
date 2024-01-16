@@ -4,21 +4,21 @@
 ### NETBOX_DEVICE
 ##
 ##
-- name: "1 - Device with required information"
+- name: 1 - Device with required information
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "R1"
+      name: R1
       device_type:
         id: "1"
-      device_role: "Core Switch"
-      site: "Test Site"
-      status: "Staged"
+      device_role: Core Switch
+      site: Test Site
+      status: Staged
     state: present
   register: test_one
 
-- name: "1 - ASSERT"
+- name: 1 - ASSERT
   ansible.builtin.assert:
     that:
       - test_one is changed
@@ -32,20 +32,20 @@
       - test_one['device']['name'] == "R1"
       - test_one['msg'] == "device R1 created"
 
-- name: "2 - Duplicate device"
+- name: 2 - Duplicate device
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "R1"
-      device_type: "Cisco Test"
-      device_role: "Core Switch"
-      site: "Test Site"
-      status: "Staged"
+      name: R1
+      device_type: Cisco Test
+      device_role: Core Switch
+      site: Test Site
+      status: Staged
     state: present
   register: test_two
 
-- name: "2 - ASSERT"
+- name: 2 - ASSERT
   ansible.builtin.assert:
     that:
       - not test_two['changed']
@@ -56,23 +56,23 @@
       - test_two['device']['status'] == "staged"
       - test_two['msg'] == "device R1 already exists"
 
-- name: "3 - Update device"
+- name: 3 - Update device
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "R1"
-      serial: "FXS1001"
+      name: R1
+      serial: FXS1001
       local_context_data:
         bgp_as: "65412"
-      virtual_chassis: "VC1"
+      virtual_chassis: VC1
       vc_position: 3
       vc_priority: 15
-      location: "Test Rack Group"
+      location: Test Rack Group
     state: present
   register: test_three
 
-- name: "3 - ASSERT"
+- name: 3 - ASSERT
   ansible.builtin.assert:
     that:
       - test_three is changed
@@ -94,19 +94,19 @@
       - test_three['device']['location'] == 1
       - test_three['msg'] == "device R1 updated"
 
-- name: "3.1 - Update device name using query_params"
+- name: 3.1 - Update device name using query_params
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "R1-changed-name"
-      serial: "FXS1001"
+      name: R1-changed-name
+      serial: FXS1001
     query_params:
       - serial
     state: present
   register: test_three_dot_one
 
-- name: "3.1 - ASSERT"
+- name: 3.1 - ASSERT
   ansible.builtin.assert:
     that:
       - test_three_dot_one is changed
@@ -119,26 +119,26 @@
       - test_three_dot_one['device']['local_context_data']["bgp_as"] == "65412"
       - test_three_dot_one['msg'] == "device R1-changed-name updated"
 
-- name: "4 - Create device with tags and assign to rack"
+- name: 4 - Create device with tags and assign to rack
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "TestR1"
+      name: TestR1
       device_type: "1841"
-      device_role: "Core Switch"
-      site: "Test Site2"
-      rack: "Test Rack Site 2"
+      device_role: Core Switch
+      site: Test Site2
+      rack: Test Rack Site 2
       position: 35
-      face: "Front"
+      face: Front
       tags:
-        - "schnozzberry"
-      tenant: "Test Tenant"
+        - schnozzberry
+      tenant: Test Tenant
       asset_tag: "1234"
     state: present
   register: test_four
 
-- name: "4 - ASSERT"
+- name: 4 - ASSERT
   ansible.builtin.assert:
     that:
       - test_four is changed
@@ -155,16 +155,16 @@
       - test_four['device']['asset_tag'] == '1234'
       - test_four['msg'] == "device TestR1 created"
 
-- name: "5 - Delete previous device"
+- name: 5 - Delete previous device
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "TestR1"
+      name: TestR1
     state: absent
   register: test_five
 
-- name: "5 - ASSERT"
+- name: 5 - ASSERT
   ansible.builtin.assert:
     that:
       - test_five is changed
@@ -172,16 +172,16 @@
       - test_five['diff']['after']['state'] == "absent"
       - test_five['msg'] == "device TestR1 deleted"
 
-- name: "6 - Delete R1"
+- name: 6 - Delete R1
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "R1-changed-name"
+      name: R1-changed-name
     state: absent
   register: test_six
 
-- name: "6 - ASSERT"
+- name: 6 - ASSERT
   ansible.builtin.assert:
     that:
       - test_six is changed
@@ -189,18 +189,18 @@
       - test_six['diff']['after']['state'] == "absent"
       - test_six['msg'] == "device R1-changed-name deleted"
 
-- name: "7 - Add primary_ip4/6 to test100"
+- name: 7 - Add primary_ip4/6 to test100
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test100"
-      primary_ip4: "172.16.180.1/24"
-      primary_ip6: "2001::1:1/64"
+      name: test100
+      primary_ip4: 172.16.180.1/24
+      primary_ip6: 2001::1:1/64
     state: present
   register: test_seven
 
-- name: "7 - ASSERT"
+- name: 7 - ASSERT
   ansible.builtin.assert:
     that:
       - test_seven is changed
@@ -215,21 +215,21 @@
       - test_seven['device']['primary_ip6'] == 2
       - test_seven['msg'] == "device test100 updated"
 
-- name: "8 - Device with empty string name"
+- name: 8 - Device with empty string name
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: ""
       device_type:
         id: 1
-      device_role: "Core Switch"
-      site: "Test Site"
-      status: "Staged"
+      device_role: Core Switch
+      site: Test Site
+      status: Staged
     state: present
   register: test_eight
 
-- name: "8 - ASSERT"
+- name: 8 - ASSERT
   ansible.builtin.assert:
     that:
       - test_eight is changed
@@ -240,4 +240,4 @@
       - test_eight['device']['site'] == 1
       - test_eight['device']['status'] == "staged"
       - "'-' in test_eight['device']['name']"
-      - "test_eight['device']['name'] | length == 36"
+      - test_eight['device']['name'] | length == 36

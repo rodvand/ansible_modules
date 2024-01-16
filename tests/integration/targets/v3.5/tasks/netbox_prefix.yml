@@ -4,16 +4,16 @@
 ### NETBOX_PREFIX
 ##
 ##
-- name: "1 - Create prefix within NetBox with only required information"
+- name: 1 - Create prefix within NetBox with only required information
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       prefix: 10.156.0.0/19
     state: present
   register: test_one
 
-- name: "1 - ASSERT"
+- name: 1 - ASSERT
   ansible.builtin.assert:
     that:
       - test_one is changed
@@ -22,35 +22,35 @@
       - test_one['msg'] == "prefix 10.156.0.0/19 created"
       - test_one['prefix']['prefix'] == "10.156.0.0/19"
 
-- name: "2 - Duplicate"
+- name: 2 - Duplicate
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       prefix: 10.156.0.0/19
     state: present
   register: test_two
 
-- name: "2 - ASSERT"
+- name: 2 - ASSERT
   ansible.builtin.assert:
     that:
       - not test_two['changed']
       - test_two['msg'] == "prefix 10.156.0.0/19 already exists"
       - test_two['prefix']['prefix'] == "10.156.0.0/19"
 
-- name: "3 - Update 10.156.0.0/19"
+- name: 3 - Update 10.156.0.0/19
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       prefix: 10.156.0.0/19
       site: Test Site
       status: Reserved
-      description: "This prefix has been updated"
+      description: This prefix has been updated
     state: present
   register: test_three
 
-- name: "3 - ASSERT"
+- name: 3 - ASSERT
   ansible.builtin.assert:
     that:
       - test_three is changed
@@ -63,16 +63,16 @@
       - test_three['prefix']['status'] == "reserved"
       - test_three['prefix']['description'] == "This prefix has been updated"
 
-- name: "4 - Delete prefix within netbox"
+- name: 4 - Delete prefix within netbox
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       prefix: 10.156.0.0/19
     state: absent
   register: test_four
 
-- name: "4 - ASSERT"
+- name: 4 - ASSERT
   ansible.builtin.assert:
     that:
       - test_four is changed
@@ -80,10 +80,10 @@
       - test_four['diff']['after']['state'] == "absent"
       - test_four['msg'] == "prefix 10.156.0.0/19 deleted"
 
-- name: "5 - Create prefix with several specified options"
+- name: 5 - Create prefix with several specified options
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       family: 4
       prefix: 10.156.32.0/19
@@ -100,11 +100,11 @@
       description: Test description
       is_pool: true
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: test_five
 
-- name: "5 - ASSERT"
+- name: 5 - ASSERT
   ansible.builtin.assert:
     that:
       - test_five is changed
@@ -123,33 +123,33 @@
       - test_five['prefix']['is_pool'] == true
       - test_five['prefix']['tags'][0] == 4
 
-- name: "6 - Get a new /24 inside 10.156.0.0/19 within NetBox - Parent doesn't exist"
+- name: 6 - Get a new /24 inside 10.156.0.0/19 within NetBox - Parent doesn't exist
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       parent: 10.156.0.0/19
       prefix_length: 24
     state: present
-    first_available: yes
+    first_available: true
   register: test_six
 
-- name: "6 - ASSERT"
+- name: 6 - ASSERT
   ansible.builtin.assert:
     that:
       - not test_six['changed']
       - test_six['msg'] == "Parent prefix does not exist - 10.156.0.0/19"
 
-- name: "7 - Create prefix within NetBox with only required information"
+- name: 7 - Create prefix within NetBox with only required information
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       prefix: 10.156.0.0/19
     state: present
   register: test_seven
 
-- name: "7 - ASSERT"
+- name: 7 - ASSERT
   ansible.builtin.assert:
     that:
       - test_seven is changed
@@ -158,18 +158,18 @@
       - test_seven['msg'] == "prefix 10.156.0.0/19 created"
       - test_seven['prefix']['prefix'] == "10.156.0.0/19"
 
-- name: "8 - Get a new /24 inside 10.156.0.0/19 within NetBox"
+- name: 8 - Get a new /24 inside 10.156.0.0/19 within NetBox
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       parent: 10.156.0.0/19
       prefix_length: 24
     state: present
-    first_available: yes
+    first_available: true
   register: test_eight
 
-- name: "8 - ASSERT"
+- name: 8 - ASSERT
   ansible.builtin.assert:
     that:
       - test_eight is changed
@@ -178,10 +178,10 @@
       - test_eight['msg'] == "prefix 10.156.0.0/24 created"
       - test_eight['prefix']['prefix'] == "10.156.0.0/24"
 
-- name: "9 - Create 10.157.0.0/19"
+- name: 9 - Create 10.157.0.0/19
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       prefix: 10.157.0.0/19
       vrf: Test VRF
@@ -189,7 +189,7 @@
     state: present
   register: test_nine
 
-- name: "9 - ASSERT"
+- name: 9 - ASSERT
   ansible.builtin.assert:
     that:
       - test_nine is changed
@@ -200,20 +200,20 @@
       - test_nine['prefix']['site'] == 1
       - test_nine['prefix']['vrf'] == 1
 
-- name: "10 - Get a new /24 inside 10.157.0.0/19 within NetBox with additional values"
+- name: 10 - Get a new /24 inside 10.157.0.0/19 within NetBox with additional values
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       parent: 10.157.0.0/19
       prefix_length: 24
       vrf: Test VRF
       site: Test Site
     state: present
-    first_available: yes
+    first_available: true
   register: test_ten
 
-- name: "10 - ASSERT"
+- name: 10 - ASSERT
   ansible.builtin.assert:
     that:
       - test_ten is changed
@@ -224,18 +224,18 @@
       - test_ten['prefix']['site'] == 1
       - test_ten['prefix']['vrf'] == 1
 
-- name: "11 - Get a new /24 inside 10.156.0.0/19 within NetBox"
+- name: 11 - Get a new /24 inside 10.156.0.0/19 within NetBox
   netbox.netbox.netbox_prefix:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       parent: 10.156.0.0/19
       prefix_length: 24
     state: present
-    first_available: yes
+    first_available: true
   register: test_eleven
 
-- name: "11 - ASSERT"
+- name: 11 - ASSERT
   ansible.builtin.assert:
     that:
       - test_eleven is changed

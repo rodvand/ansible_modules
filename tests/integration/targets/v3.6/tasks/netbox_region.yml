@@ -7,9 +7,9 @@
 - name: "REGION 1: Necessary info creation"
   netbox.netbox.netbox_region:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Region One"
+      name: Test Region One
     state: present
   register: test_one
 
@@ -26,9 +26,9 @@
 - name: "REGION 2: Create duplicate"
   netbox.netbox.netbox_region:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Region One"
+      name: Test Region One
     state: present
   register: test_two
 
@@ -43,10 +43,10 @@
 - name: "REGION 3: ASSERT - Update"
   netbox.netbox.netbox_region:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Region One"
-      parent_region: "Test Region"
+      name: Test Region One
+      parent_region: Test Region
     state: present
   register: test_three
 
@@ -63,9 +63,9 @@
 - name: "REGION 4: ASSERT - Delete"
   netbox.netbox.netbox_region:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Region One"
+      name: Test Region One
     state: absent
   register: test_four
 

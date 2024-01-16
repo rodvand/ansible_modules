@@ -30,43 +30,45 @@
 
 - name: "NETBOX_LOOKUP 5: Add one of two devices for lookup filter test."
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "L1"
-      device_type: "Cisco Test"
-      device_role: "Core Switch"
-      site: "Test Site"
-      status: "Staged"
+      name: L1
+      device_type: Cisco Test
+      device_role: Core Switch
+      site: Test Site
+      status: Staged
       tags:
-        - "nolookup"
+        - nolookup
     state: present
 
 - name: "NETBOX_LOOKUP 6: Add two of two devices for lookup filter test."
   netbox.netbox.netbox_device:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "L2"
-      device_type: "Cisco Test"
-      device_role: "Core Switch"
-      site: "Test Site2"
-      status: "Staged"
+      name: L2
+      device_type: Cisco Test
+      device_role: Core Switch
+      site: Test Site2
+      status: Staged
       tags:
-        - "lookup"
+        - lookup
     state: present
 
 - name: "NETBOX_LOOKUP 7: Device query returns exactly the L2 device"
   ansible.builtin.assert:
     that: "{{ query_result|community.general.json_query('[?value.display==`L2`]')|count }} == 1"
   vars:
-    query_result: "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='role=core-switch tag=lookup', api_endpoint='http://localhost:32768', token='0123456789abcdef0123456789abcdef01234567') }}"
+    query_result: "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='role=core-switch tag=lookup', api_endpoint='http://localhost:32768', token='0123456789abcdef0123456789abcdef01234567')
+      }}"
 
 - name: "NETBOX_LOOKUP 8: Device query specifying raw data returns payload without key/value dict"
   ansible.builtin.assert:
     that: "{{ query_result|community.general.json_query('[?display==`L2`]')|count }} == 1"
   vars:
-    query_result: "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='role=core-switch tag=lookup', api_endpoint='http://localhost:32768', token='0123456789abcdef0123456789abcdef01234567', raw_data=True) }}"
+    query_result: "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='role=core-switch tag=lookup', api_endpoint='http://localhost:32768', token='0123456789abcdef0123456789abcdef01234567',
+      raw_data=True) }}"
 
 - name: "NETBOX_LOOKUP 9: Device query specifying multiple sites, Make sure L1 and L2 are in the results"
   ansible.builtin.assert:
@@ -74,9 +76,11 @@
       - "'L1' in {{ query_result |community.general.json_query('[*].display') }}"
       - "'L2' in {{ query_result |community.general.json_query('[*].display') }}"
   vars:
-    query_result: "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='role=core-switch site=test-site site=test-site2', api_endpoint='http://localhost:32768', token='0123456789abcdef0123456789abcdef01234567', raw_data=True) }}"
+    query_result: "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='role=core-switch site=test-site site=test-site2', api_endpoint='http://localhost:32768',
+      token='0123456789abcdef0123456789abcdef01234567', raw_data=True) }}"
 
 - name: "NETBOX_LOOKUP 10: Device query by ID"
   ansible.builtin.assert:
     that:
-      - "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='id=1', api_endpoint='http://localhost:32768', token='0123456789abcdef0123456789abcdef01234567') }}"
+      - "{{ query('netbox.netbox.nb_lookup', 'devices', api_filter='id=1', api_endpoint='http://localhost:32768', token='0123456789abcdef0123456789abcdef01234567')
+        }}"

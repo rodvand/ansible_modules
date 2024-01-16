@@ -7,10 +7,10 @@
 - name: "CUSTOM_LINK 1: Necessary info creation"
   netbox.netbox.netbox_custom_link:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
+        - dcim.device
       name: Custom Link
       link_text: Open Web management
       link_url: !unsafe https://{{ obj.name }}.domain.local/
@@ -31,10 +31,10 @@
 - name: "CUSTOM_LINK 2: Create duplicate"
   netbox.netbox.netbox_custom_link:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
+        - dcim.device
       name: Custom Link
       link_text: Open Web management
       link_url: !unsafe https://{{ obj.name }}.domain.local/
@@ -51,10 +51,10 @@
 - name: "CUSTOM_FIELD 3: Update data and add weight"
   netbox.netbox.netbox_custom_link:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
+        - dcim.device
       name: Custom Link
       link_text: Open Web management
       link_url: !unsafe https://{{ obj.name }}.domain.local/
@@ -73,10 +73,10 @@
 - name: "CUSTOM_LINK 4: Change content type"
   netbox.netbox.netbox_custom_link:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "virtualization.virtualmachine"
+        - virtualization.virtualmachine
       name: Custom Link
       link_text: Open Web management
       link_url: !unsafe https://{{ obj.name }}.domain.local/
@@ -94,10 +94,10 @@
 - name: "CUSTOM_LINK 5: Delete"
   netbox.netbox.netbox_custom_link:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "virtualization.virtualmachine"
+        - virtualization.virtualmachine
       name: Custom Link
       link_text: Open Web management
       link_url: !unsafe https://{{ obj.name }}.domain.local/

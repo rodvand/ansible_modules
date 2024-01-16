@@ -10,7 +10,7 @@
 - name: "CABLE 1: Necessary info creation"
   netbox.netbox.netbox_cable:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       termination_a_type: dcim.interface
       termination_a:
@@ -38,7 +38,7 @@
 - name: "CABLE 2: Create duplicate"
   netbox.netbox.netbox_cable:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       termination_a_type: dcim.interface
       termination_a:
@@ -64,7 +64,7 @@
 - name: "CABLE 3: Update Cable with other fields"
   netbox.netbox.netbox_cable:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       termination_a_type: dcim.interface
       termination_a:
@@ -81,8 +81,8 @@
       length: 30
       length_unit: m
       tags:
-        - "Schnozzberry"
-      tenant: "Test Tenant"
+        - Schnozzberry
+      tenant: Test Tenant
     state: present
   register: test_three
 
@@ -115,7 +115,7 @@
 - name: "CABLE 4: ASSERT - Delete"
   netbox.netbox.netbox_cable:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       termination_a_type: dcim.interface
       termination_a:
@@ -139,7 +139,7 @@
 - name: "CABLE 5: Connect Console Port and Console Server Port"
   netbox.netbox.netbox_cable:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       termination_a_type: dcim.consoleserverport
       termination_a:
@@ -167,16 +167,16 @@
 - name: "CABLE 6: Circuits Termination as side A"
   netbox.netbox.netbox_cable:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       termination_a_type: circuits.circuittermination
       termination_a:
-        circuit: "Test Circuit Two"
-        term_side: "A"
+        circuit: Test Circuit Two
+        term_side: A
       termination_b_type: dcim.interface
       termination_b:
-        device: "test100"
-        name: "GigabitEthernet2"
+        device: test100
+        name: GigabitEthernet2
     state: present
   register: test_six
 

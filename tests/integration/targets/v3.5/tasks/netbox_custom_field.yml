@@ -7,10 +7,10 @@
 - name: "CUSTOM_FIELD 1: Necessary info creation"
   netbox.netbox.netbox_custom_field:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
+        - dcim.device
       name: A_CustomField
       type: text
     state: present
@@ -32,10 +32,10 @@
 - name: "CUSTOM_FIELD 2: Create duplicate"
   netbox.netbox.netbox_custom_field:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
+        - dcim.device
       name: A_CustomField
     state: present
   register: test_two
@@ -50,12 +50,12 @@
 - name: "CUSTOM_FIELD 3: Update data and make it required"
   netbox.netbox.netbox_custom_field:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
-      name: "A_CustomField"
-      description: "Added a description"
+        - dcim.device
+      name: A_CustomField
+      description: Added a description
       required: true
     state: present
   register: test_three
@@ -72,12 +72,12 @@
 - name: "CUSTOM_FIELD 4: Change content type"
   netbox.netbox.netbox_custom_field:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "virtualization.virtualmachine"
-      name: "A_CustomField"
-      description: "Added a description"
+        - virtualization.virtualmachine
+      name: A_CustomField
+      description: Added a description
       required: true
     state: present
   register: test_four
@@ -93,9 +93,9 @@
 - name: "CUSTOM_FIELD 5: Delete"
   netbox.netbox.netbox_custom_field:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "A_CustomField"
+      name: A_CustomField
     state: absent
   register: test_five
 
@@ -110,10 +110,10 @@
 - name: "CUSTOM_FIELD 6: UI Visibility (hidden-ifunset)"
   netbox.netbox.netbox_custom_field:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
+        - dcim.device
       name: A_CustomField
       type: text
       ui_visibility: hidden-ifunset

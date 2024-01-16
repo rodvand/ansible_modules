@@ -4,14 +4,14 @@
 - name: "NETBOX_ROUTE_TARGET_ADD: Check Mode - Add all fields except description"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
-      tenant: "Test Tenant"
+      name: 65000:65001
+      tenant: Test Tenant
       tags:
         - first
         - second
-  check_mode: yes
+  check_mode: true
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_ADD: (ASSERT) Check Mode - Add all fields except description"
@@ -29,10 +29,10 @@
 - name: "NETBOX_ROUTE_TARGET_ADD: Add all fields except description"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
-      tenant: "Test Tenant"
+      name: 65000:65001
+      tenant: Test Tenant
       tags:
         - first
         - second
@@ -53,10 +53,10 @@
 - name: "NETBOX_ROUTE_TARGET_ADD_IDEM: (IDEMPOTENT) Add all fields except description"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
-      tenant: "Test Tenant"
+      name: 65000:65001
+      tenant: Test Tenant
       tags:
         - first
         - second
@@ -76,15 +76,15 @@
 - name: "NETBOX_ROUTE_TARGET_UPDATE: Check Mode - Update description"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
-      description: "NEW DESCRIPTION"
-      tenant: "Test Tenant"
+      name: 65000:65001
+      description: NEW DESCRIPTION
+      tenant: Test Tenant
       tags:
         - first
         - second
-  check_mode: yes
+  check_mode: true
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_UPDATE: (ASSERT) Check Mode - Update description"
@@ -103,11 +103,11 @@
 - name: "NETBOX_ROUTE_TARGET_UPDATE: Update description"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
-      tenant: "Test Tenant"
-      description: "NEW DESCRIPTION"
+      name: 65000:65001
+      tenant: Test Tenant
+      description: NEW DESCRIPTION
       tags:
         - first
         - second
@@ -129,11 +129,11 @@
 - name: "NETBOX_ROUTE_TARGET_UPDATE_IDEM: (IDEMPOTENT) Update description"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
-      tenant: "Test Tenant"
-      description: "NEW DESCRIPTION"
+      name: 65000:65001
+      tenant: Test Tenant
+      description: NEW DESCRIPTION
       tags:
         - first
         - second
@@ -154,11 +154,11 @@
 - name: "NETBOX_ROUTE_TARGET_DELETE: Check Mode - Delete route target"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
+      name: 65000:65001
     state: absent
-  check_mode: yes
+  check_mode: true
   register: test_results
 
 - name: "NETBOX_ROUTE_TARGET_DELETE: (ASSERT) Check Mode - Delete route target"
@@ -173,9 +173,9 @@
 - name: "NETBOX_ROUTE_TARGET_DELETE: Delete route target"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
+      name: 65000:65001
     state: absent
   register: test_results
 
@@ -191,9 +191,9 @@
 - name: "NETBOX_ROUTE_TARGET_DELETE_IDEM: (IDEMPOTENT) Delete route target"
   netbox.netbox.netbox_route_target:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "65000:65001"
+      name: 65000:65001
     state: absent
   register: test_results
 

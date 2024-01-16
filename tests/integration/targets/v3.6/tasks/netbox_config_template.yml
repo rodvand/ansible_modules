@@ -7,11 +7,11 @@
 - name: "CONFIG_TEMPLATES 1: Necessary info creation"
   netbox.netbox.netbox_config_template:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_template"
-      description: "Test template"
-      template_code: "test template"
+      name: test_template
+      description: Test template
+      template_code: test template
     state: present
   register: test_one
 
@@ -29,11 +29,11 @@
 - name: "CONFIG_TEMPLATES 2: Create duplicate"
   netbox.netbox.netbox_config_template:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_template"
-      description: "Test template"
-      template_code: "test template"
+      name: test_template
+      description: Test template
+      template_code: test template
     state: present
   register: test_two
 
@@ -47,11 +47,11 @@
 - name: "CONFIG_TEMPLATES 3: Update data"
   netbox.netbox.netbox_config_template:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_template"
-      description: "Updated test template"
-      template_code: "updated test template"
+      name: test_template
+      description: Updated test template
+      template_code: updated test template
     state: present
   register: test_three
 
@@ -67,9 +67,9 @@
 - name: "CONFIG_TEMPLATES 4: Delete"
   netbox.netbox.netbox_config_template:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "test_template"
+      name: test_template
     state: absent
   register: test_four
 

@@ -7,11 +7,11 @@
 - name: "NETBOX_CIRCUIT_TERMINATION 1: Create provider within NetBox with only required information"
   netbox.netbox.netbox_circuit_termination:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       circuit: Test Circuit
       term_side: A
-      site: "Test Site"
+      site: Test Site
       port_speed: 10000
     state: present
   register: test_one
@@ -31,7 +31,7 @@
 - name: "NETBOX_CIRCUIT_TERMINATION 2: Duplicate"
   netbox.netbox.netbox_circuit_termination:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       circuit: Test Circuit
       term_side: A
@@ -51,14 +51,14 @@
 - name: "NETBOX_CIRCUIT_TERMINATION 3: Update provider with other fields"
   netbox.netbox.netbox_circuit_termination:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       circuit: Test Circuit
       term_side: A
       upstream_speed: 1000
       xconnect_id: 10X100
       pp_info: PP10-24
-      description: "Test description"
+      description: Test description
     state: present
   register: test_three
 
@@ -83,11 +83,11 @@
 - name: "NETBOX_CIRCUIT_TERMINATION 4: Create Z Side"
   netbox.netbox.netbox_circuit_termination:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       circuit: Test Circuit
       term_side: Z
-      site: "Test Site"
+      site: Test Site
       port_speed: 10000
     state: present
   register: test_four
@@ -107,7 +107,7 @@
 - name: "NETBOX_CIRCUIT_TERMINATION 5: Delete provider within netbox"
   netbox.netbox.netbox_circuit_termination:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       circuit: Test Circuit
       term_side: A

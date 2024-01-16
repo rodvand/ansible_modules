@@ -7,7 +7,7 @@
 - name: "L2VPN 1: Necessary info creation"
   netbox.netbox.netbox_l2vpn:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test L2VPN
       type: vxlan
@@ -27,7 +27,7 @@
 - name: "L2VPN 2: Create duplicate"
   netbox.netbox.netbox_l2vpn:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test L2VPN
       type: vxlan
@@ -45,19 +45,19 @@
 - name: "L2VPN 4: ASSERT - Update"
   netbox.netbox.netbox_l2vpn:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test L2VPN"
+      name: Test L2VPN
       type: vxlan
-      tenant: "Test Tenant"
+      tenant: Test Tenant
       description: Updated description
       import_targets:
-        - "4000:4000"
-        - "5000:5000"
+        - 4000:4000
+        - 5000:5000
       export_targets:
-        - "6000:6000"
+        - 6000:6000
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: test_four
 
@@ -80,9 +80,9 @@
 - name: "L2VPN: ASSERT - Delete"
   netbox.netbox.netbox_l2vpn:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test L2VPN"
+      name: Test L2VPN
       type: vxlan
     state: absent
   register: test_six

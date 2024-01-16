@@ -10,7 +10,7 @@
 - name: "VIRTUAL_CHASSIS 0: Create device for testing virtual chassis"
   netbox.netbox.netbox_device:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Device Virtual Chassis Tests
       device_type: Cisco Test
@@ -23,9 +23,9 @@
 - name: "VIRTUAL_CHASSIS 1: Necessary info creation"
   netbox.netbox.netbox_virtual_chassis:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "First VC"
+      name: First VC
       master: Device Virtual Chassis Tests
     state: present
   register: test_one
@@ -43,9 +43,9 @@
 - name: "VIRTUAL_CHASSIS 2: Create duplicate"
   netbox.netbox.netbox_virtual_chassis:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "First VC"
+      name: First VC
       master: Device Virtual Chassis Tests
     state: present
   register: test_two
@@ -61,9 +61,9 @@
 - name: "POWER_FEED 3: Update virtual_chassis with other fields"
   netbox.netbox.netbox_virtual_chassis:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "First VC"
+      name: First VC
       master: Device Virtual Chassis Tests
       domain: Domain Text
     state: present
@@ -82,7 +82,7 @@
 - name: "VIRTUAL_CHASSIS 4: Create device for testing virtual chassis deletion"
   netbox.netbox.netbox_device:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Device Virtual Chassis Tests 2
       device_type: Cisco Test
@@ -95,9 +95,9 @@
 - name: "VIRTUAL_CHASSIS 4: Create Virtual Chassis for Delete Test"
   netbox.netbox.netbox_virtual_chassis:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Second VC"
+      name: Second VC
       master: Device Virtual Chassis Tests 2
     state: present
   register: test_four
@@ -115,9 +115,9 @@
 - name: "VIRTUAL_CHASSIS 5: Delete Virtual Chassis"
   netbox.netbox.netbox_virtual_chassis:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Second VC"
+      name: Second VC
       master: Device Virtual Chassis Tests 2
     state: absent
   register: test_five

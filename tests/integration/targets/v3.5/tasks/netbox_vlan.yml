@@ -7,7 +7,7 @@
 - name: "VLAN 1: Necessary info creation"
   netbox.netbox.netbox_vlan:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test VLAN 500
       vid: 500
@@ -27,7 +27,7 @@
 - name: "VLAN 2: Create duplicate"
   netbox.netbox.netbox_vlan:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test VLAN 500
       vid: 500
@@ -45,13 +45,13 @@
 - name: "VLAN 3: Create VLAN with same name, but different site"
   netbox.netbox.netbox_vlan:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test VLAN 500
       vid: 500
       site: Test Site
       tenant: Test Tenant
-      vlan_group: "Test VLAN Group"
+      vlan_group: Test VLAN Group
     state: present
   register: test_three
 
@@ -70,18 +70,18 @@
 - name: "VLAN 4: ASSERT - Update"
   netbox.netbox.netbox_vlan:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VLAN 500"
+      name: Test VLAN 500
       vid: 500
-      tenant: "Test Tenant"
-      vlan_group: "Test VLAN Group"
+      tenant: Test Tenant
+      vlan_group: Test VLAN Group
       status: Reserved
       vlan_role: Network of care
       description: Updated description
-      site: "Test Site"
+      site: Test Site
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: test_four
 
@@ -106,18 +106,18 @@
 - name: "VLAN: ASSERT - IDEMPOTENT WITH VLAN_GROUP"
   netbox.netbox.netbox_vlan:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VLAN 500"
+      name: Test VLAN 500
       vid: 500
-      tenant: "Test Tenant"
-      vlan_group: "Test VLAN Group"
+      tenant: Test Tenant
+      vlan_group: Test VLAN Group
       status: Reserved
       vlan_role: Network of care
       description: Updated description
-      site: "Test Site"
+      site: Test Site
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: idempotent_vlan_group
 
@@ -129,13 +129,13 @@
 - name: "VLAN: Create VLAN with same name, but different vlan_group"
   netbox.netbox.netbox_vlan:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test VLAN 500
       vid: 500
       site: Test Site
       tenant: Test Tenant
-      vlan_group: "Test VLAN Group 2"
+      vlan_group: Test VLAN Group 2
     state: present
   register: new_vlan_group
 
@@ -154,11 +154,11 @@
 - name: "VLAN 5: ASSERT - Delete more than one result"
   netbox.netbox.netbox_vlan:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VLAN 500"
+      name: Test VLAN 500
     state: absent
-  ignore_errors: yes
+  ignore_errors: true
   register: test_five
 
 - name: "VLAN 5: ASSERT - Delete more than one result"
@@ -170,11 +170,11 @@
 - name: "VLAN 6: ASSERT - Delete"
   netbox.netbox.netbox_vlan:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VLAN 500"
+      name: Test VLAN 500
       site: Test Site
-      vlan_group: "Test VLAN Group"
+      vlan_group: Test VLAN Group
     state: absent
   register: test_six
 

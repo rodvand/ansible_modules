@@ -7,12 +7,12 @@
 - name: "WEBHOOK 1: Necessary info creation"
   netbox.netbox.netbox_webhook:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
+        - dcim.device
       name: Example Webhook
-      type_create: yes
+      type_create: true
       payload_url: https://payload.url
       body_template: !unsafe >-
         {{ data }}
@@ -34,12 +34,12 @@
 - name: "WEBHOOK 2: Create duplicate"
   netbox.netbox.netbox_webhook:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
+        - dcim.device
       name: Example Webhook
-      type_create: yes
+      type_create: true
       payload_url: https://payload.url
       body_template: !unsafe >-
         {{ data }}
@@ -56,12 +56,12 @@
 - name: "WEBHOOK 3: Update data and add on delete"
   netbox.netbox.netbox_webhook:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "dcim.device"
-      type_create: yes
-      type_delete: yes
+        - dcim.device
+      type_create: true
+      type_delete: true
       name: Example Webhook
       payload_url: https://payload.url
       body_template: !unsafe >-
@@ -79,10 +79,10 @@
 - name: "WEBHOOK 4: Change content type"
   netbox.netbox.netbox_webhook:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "virtualization.virtualmachine"
+        - virtualization.virtualmachine
       name: Example Webhook
       payload_url: https://payload.url
       body_template: !unsafe >-
@@ -101,10 +101,10 @@
 - name: "WEBHOOK 5: Delete"
   netbox.netbox.netbox_webhook:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       content_types:
-        - "virtualization.virtualmachine"
+        - virtualization.virtualmachine
       name: Example Webhook
       payload_url: https://payload.url
       body_template: !unsafe >-

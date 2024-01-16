@@ -7,9 +7,9 @@
 - name: "CIRCUIT_TYPE 1: Necessary info creation"
   netbox.netbox.netbox_circuit_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Circuit Type One"
+      name: Test Circuit Type One
     state: present
   register: test_one
 
@@ -26,9 +26,9 @@
 - name: "CIRCUIT_TYPE 2: Create duplicate"
   netbox.netbox.netbox_circuit_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Circuit Type One"
+      name: Test Circuit Type One
     state: present
   register: test_two
 
@@ -43,10 +43,10 @@
 - name: "CIRCUIT_TYPE 3: User specified slug"
   netbox.netbox.netbox_circuit_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Circuit Type Two"
-      slug: "test-circuit-type-2"
+      name: Test Circuit Type Two
+      slug: test-circuit-type-2
     state: present
   register: test_three
 
@@ -63,9 +63,9 @@
 - name: "CIRCUIT_TYPE 4: ASSERT - Delete"
   netbox.netbox.netbox_circuit_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Circuit Type One"
+      name: Test Circuit Type One
     state: absent
   register: test_four
 
@@ -80,10 +80,10 @@
 - name: "CIRCUIT_TYPE 5: ASSERT - Delete"
   netbox.netbox.netbox_circuit_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Circuit Type Two"
-      slug: "test-circuit-type-2"
+      name: Test Circuit Type Two
+      slug: test-circuit-type-2
     state: absent
   register: test_five
 

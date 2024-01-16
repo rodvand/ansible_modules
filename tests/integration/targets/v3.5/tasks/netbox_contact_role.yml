@@ -7,9 +7,9 @@
 - name: "CONTACT_ROLE 1: Necessary info creation"
   netbox.netbox.netbox_contact_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Contact Role"
+      name: Test Contact Role
     state: present
   register: test_one
 
@@ -26,9 +26,9 @@
 - name: "CONTACT_ROLE 2: Create duplicate"
   netbox.netbox.netbox_contact_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Contact Role"
+      name: Test Contact Role
     state: present
   register: test_two
 
@@ -43,10 +43,10 @@
 - name: "CONTACT_ROLE 3: ASSERT - Update"
   netbox.netbox.netbox_contact_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Contact Role"
-      description: "Update description"
+      name: Test Contact Role
+      description: Update description
     state: present
   register: test_three
 
@@ -63,7 +63,7 @@
 - name: "CONTACT_ROLE 4: ASSERT - Delete"
   netbox.netbox.netbox_contact_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test Contact Role
     state: absent
@@ -80,7 +80,7 @@
 - name: "CONTACT_ROLE 5: ASSERT - Delete non existing"
   netbox.netbox.netbox_contact_role:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test Contact Role
     state: absent

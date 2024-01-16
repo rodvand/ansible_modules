@@ -7,10 +7,10 @@
 - name: "TAG 1: ASSERT - Necessary info creation"
   netbox.netbox.netbox_tag:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Tag 1"
-      description: "Tag 1 test"
+      name: Test Tag 1
+      description: Tag 1 test
       color: "0000ff"
     state: present
   register: test_one
@@ -30,10 +30,10 @@
 - name: "TAG 2: Create duplicate"
   netbox.netbox.netbox_tag:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Tag 1"
-      description: "Tag 1 test"
+      name: Test Tag 1
+      description: Tag 1 test
       color: "0000ff"
     state: present
   register: test_two
@@ -48,10 +48,10 @@
 - name: "TAG 3: ASSERT - Update"
   netbox.netbox.netbox_tag:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Tag 1"
-      description: "Tag 1 update test"
+      name: Test Tag 1
+      description: Tag 1 update test
       color: "00ff00"
     state: present
   register: test_three
@@ -70,9 +70,9 @@
 - name: "TAG 4: ASSERT - Delete"
   netbox.netbox.netbox_tag:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Tag 1"
+      name: Test Tag 1
     state: absent
   register: test_four
 
@@ -88,11 +88,11 @@
 - name: "TAG 5: ASSERT - Necessary info creation"
   netbox.netbox.netbox_tag:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test Tag 5"
-      slug: "test-tag-five"
-      description: "Tag 5 test"
+      name: Test Tag 5
+      slug: test-tag-five
+      description: Tag 5 test
       color: "0000ff"
     state: present
   register: test_five

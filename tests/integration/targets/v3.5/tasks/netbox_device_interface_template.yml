@@ -4,9 +4,9 @@
 ### NETBOX_DEVICE_INTERFACE_TEMPLATE
 ##
 ##
-- name: "1 - Interface with required information"
+- name: 1 - Interface with required information
   netbox.netbox.netbox_device_interface_template:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device_type: Arista Test
@@ -14,7 +14,7 @@
       type: 10gbase-t
   register: test_one
 
-- name: "1 - ASSERT"
+- name: 1 - ASSERT
   ansible.builtin.assert:
     that:
       - test_one is changed
@@ -25,9 +25,9 @@
       - test_one['interface_template']['device_type'] == 2
       - test_one['interface_template']['type'] == '10gbase-t'
 
-- name: "2 - Update 10GBASE-T (10GE)"
+- name: 2 - Update 10GBASE-T (10GE)
   netbox.netbox.netbox_device_interface_template:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device_type: Arista Test
@@ -36,7 +36,7 @@
       mgmt_only: true
   register: test_two
 
-- name: "2 - ASSERT"
+- name: 2 - ASSERT
   ansible.builtin.assert:
     that:
       - test_two is changed
@@ -46,9 +46,9 @@
       - test_two['interface_template']['device_type'] == 2
       - test_two['interface_template']['mgmt_only'] == true
 
-- name: "3 - Delete interface template 10GBASE-T (10GE)"
+- name: 3 - Delete interface template 10GBASE-T (10GE)
   netbox.netbox.netbox_device_interface_template:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device_type: Arista Test
@@ -57,7 +57,7 @@
     state: absent
   register: test_three
 
-- name: "3 - ASSERT"
+- name: 3 - ASSERT
   ansible.builtin.assert:
     that:
       - test_three is changed
@@ -65,9 +65,9 @@
       - test_three['diff']['before']['state'] == "present"
       - test_three['diff']['after']['state'] == "absent"
 
-- name: "4 - Create LAG with several specified options"
+- name: 4 - Create LAG with several specified options
   netbox.netbox.netbox_device_interface_template:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device_type: Arista Test
@@ -77,7 +77,7 @@
     state: present
   register: test_four
 
-- name: "4 - ASSERT"
+- name: 4 - ASSERT
   ansible.builtin.assert:
     that:
       - test_four is changed
@@ -89,9 +89,9 @@
       - test_four['interface_template']['type'] == "lag"
       - test_four['interface_template']['mgmt_only'] == false
 
-- name: "5 - Duplicate Interface Template port channel template"
+- name: 5 - Duplicate Interface Template port channel template
   netbox.netbox.netbox_device_interface_template:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device_type: Arista Test
@@ -99,7 +99,7 @@
       type: lag
   register: test_five
 
-- name: "5 - ASSERT"
+- name: 5 - ASSERT
   ansible.builtin.assert:
     that:
       - not test_five['changed']

@@ -7,10 +7,10 @@
 - name: "DEVICE_BAY 1: Necessary info creation"
   netbox.netbox.netbox_device_bay:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      device: "Test Nexus One"
-      name: "Device Bay One"
+      device: Test Nexus One
+      name: Device Bay One
     state: present
   register: test_one
 
@@ -27,10 +27,10 @@
 - name: "DEVICE_BAY 2: Create duplicate"
   netbox.netbox.netbox_device_bay:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      device: "Test Nexus One"
-      name: "Device Bay One"
+      device: Test Nexus One
+      name: Device Bay One
     state: present
   register: test_two
 
@@ -45,13 +45,13 @@
 - name: "DEVICE_BAY 3: ASSERT - Update"
   netbox.netbox.netbox_device_bay:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      device: "Test Nexus One"
-      name: "Device Bay One"
-      installed_device: "Test Nexus Child One"
+      device: Test Nexus One
+      name: Device Bay One
+      installed_device: Test Nexus Child One
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: test_three
 
@@ -70,9 +70,9 @@
 - name: "DEVICE_BAY 4: ASSERT - Delete"
   netbox.netbox.netbox_device_bay:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Device Bay One"
+      name: Device Bay One
     state: absent
   register: test_four
 

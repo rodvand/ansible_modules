@@ -7,7 +7,7 @@
 - name: "NETBOX_CIRCUIT 1: Create provider within NetBox with only required information"
   netbox.netbox.netbox_circuit:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       cid: Test Circuit One
       provider: Test Provider
@@ -29,7 +29,7 @@
 - name: "NETBOX_CIRCUIT 2: Duplicate"
   netbox.netbox.netbox_circuit:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       cid: Test Circuit One
       provider: Test Provider
@@ -49,7 +49,7 @@
 - name: "NETBOX_CIRCUIT 3: Update provider with other fields"
   netbox.netbox.netbox_circuit:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       cid: Test Circuit One
       provider: Test Provider
@@ -59,7 +59,7 @@
       install_date: "2018-12-25"
       commit_rate: 10000
       description: "Test circuit       "
-      comments: "FAST CIRCUIT"
+      comments: FAST CIRCUIT
     state: present
   register: test_three
 
@@ -87,7 +87,7 @@
 - name: "NETBOX_CIRCUIT 4: Delete provider within netbox"
   netbox.netbox.netbox_circuit:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       cid: Test Circuit One
     state: absent

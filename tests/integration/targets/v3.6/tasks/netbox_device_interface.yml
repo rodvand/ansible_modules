@@ -1,17 +1,17 @@
 ---
 # NETBOX_DEVICE_INTERFACE
 
-- name: "1 - Interface with required information"
+- name: 1 - Interface with required information
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
       name: GigabitEthernet3
-      type: "1000Base-T (1GE)"
+      type: 1000Base-T (1GE)
   register: test_one
 
-- name: "1 - ASSERT"
+- name: 1 - ASSERT
   ansible.builtin.assert:
     that:
       - test_one is changed
@@ -21,9 +21,9 @@
       - test_one['interface']['name'] == "GigabitEthernet3"
       - test_one['interface']['device'] == 1
 
-- name: "2 - Update test100 - GigabitEthernet3"
+- name: 2 - Update test100 - GigabitEthernet3
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
@@ -32,7 +32,7 @@
       enabled: false
   register: test_two
 
-- name: "2 - ASSERT"
+- name: 2 - ASSERT
   ansible.builtin.assert:
     that:
       - test_two is changed
@@ -44,9 +44,9 @@
       - test_two['interface']['enabled'] == false
       - test_two['interface']['mtu'] == 1600
 
-- name: "3 - Delete interface test100 - GigabitEthernet3"
+- name: 3 - Delete interface test100 - GigabitEthernet3
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
@@ -54,7 +54,7 @@
     state: absent
   register: test_three
 
-- name: "3 - ASSERT"
+- name: 3 - ASSERT
   ansible.builtin.assert:
     that:
       - test_three is changed
@@ -62,9 +62,9 @@
       - test_three['diff']['before']['state'] == "present"
       - test_three['diff']['after']['state'] == "absent"
 
-- name: "4 - Create LAG with several specified options"
+- name: 4 - Create LAG with several specified options
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
@@ -76,7 +76,7 @@
     state: present
   register: test_four
 
-- name: "4 - ASSERT"
+- name: 4 - ASSERT
   ansible.builtin.assert:
     that:
       - test_four is changed
@@ -91,9 +91,9 @@
       - test_four['interface']['mode'] == "access"
       - test_four['interface']['mtu'] == 1600
 
-- name: "5 - Create interface and assign it to parent LAG"
+- name: 5 - Create interface and assign it to parent LAG
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
@@ -108,7 +108,7 @@
     state: present
   register: test_five
 
-- name: "5 - ASSERT"
+- name: 5 - ASSERT
   ansible.builtin.assert:
     that:
       - test_five is changed
@@ -124,9 +124,9 @@
       - test_five['interface']['mode'] == "access"
       - test_five['interface']['mtu'] == 1600
 
-- name: "6 - Create interface as trunk port"
+- name: 6 - Create interface as trunk port
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
@@ -147,7 +147,7 @@
     state: present
   register: test_six
 
-- name: "6 - ASSERT"
+- name: 6 - ASSERT
   ansible.builtin.assert:
     that:
       - test_six is changed
@@ -164,16 +164,16 @@
       - test_six['interface']['tagged_vlans'] == [2, 3]
       - test_six['interface']['untagged_vlan'] == 1
 
-- name: "7 - Duplicate Interface"
+- name: 7 - Duplicate Interface
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
       name: GigabitEthernet1
   register: test_seven
 
-- name: "7 - ASSERT"
+- name: 7 - ASSERT
   ansible.builtin.assert:
     that:
       - not test_seven['changed']
@@ -181,32 +181,32 @@
       - test_seven['interface']['name'] == "GigabitEthernet1"
       - test_seven['interface']['device'] == 1
 
-- name: "Add port-channel1 to R1 to test finding proper port-channel1"
+- name: Add port-channel1 to R1 to test finding proper port-channel1
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      device: "R1-Device"
-      name: "port-channel1"
-      type: "Link Aggregation Group (LAG)"
+      device: R1-Device
+      name: port-channel1
+      type: Link Aggregation Group (LAG)
 
-- name: "8 - Create interface and assign it to parent LAG - non dict"
+- name: 8 - Create interface and assign it to parent LAG - non dict
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
       name: GigabitEthernet4
       enabled: false
       type: 1000Base-T (1GE)
-      lag: "port-channel1"
+      lag: port-channel1
       mtu: 1600
       mgmt_only: false
       mode: Access
     state: present
   register: test_eight
 
-- name: "8 - ASSERT"
+- name: 8 - ASSERT
   ansible.builtin.assert:
     that:
       - test_eight is changed
@@ -222,9 +222,9 @@
       - test_eight['interface']['mode'] == "access"
       - test_eight['interface']['mtu'] == 1600
 
-- name: "9 - Create interface on VC child"
+- name: 9 - Create interface on VC child
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: Test Nexus Child One
@@ -233,7 +233,7 @@
     state: present
   register: test_nine
 
-- name: "9 - ASSERT"
+- name: 9 - ASSERT
   ansible.builtin.assert:
     that:
       - test_nine is changed
@@ -245,20 +245,20 @@
       - test_nine['interface']['enabled'] == true
       - test_nine['interface']['type'] == "1000base-t"
 
-- name: "10 - Update interface on VC child"
+- name: 10 - Update interface on VC child
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: Test Nexus One
       name: Ethernet2/2
-      description: "Updated child interface from parent device"
+      description: Updated child interface from parent device
       type: 1000Base-T (1GE)
-    update_vc_child: True
+    update_vc_child: true
     state: present
   register: test_ten
 
-- name: "10 - ASSERT"
+- name: 10 - ASSERT
   ansible.builtin.assert:
     that:
       - test_ten is changed
@@ -270,28 +270,28 @@
       - test_ten['interface']['type'] == "1000base-t"
       - test_ten['interface']['description'] == 'Updated child interface from parent device'
 
-- name: "11 - Update interface on VC child w/o update_vc_child"
+- name: 11 - Update interface on VC child w/o update_vc_child
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: Test Nexus One
       name: Ethernet2/2
-      description: "Updated child interface from parent device - test"
+      description: Updated child interface from parent device - test
       type: 1000Base-T (1GE)
     state: present
-  ignore_errors: yes
+  ignore_errors: true
   register: test_eleven
 
-- name: "11 - ASSERT"
+- name: 11 - ASSERT
   ansible.builtin.assert:
     that:
       - test_eleven is failed
       - test_eleven['msg'] == "Must set update_vc_child to True to allow child device interface modification"
 
-- name: "12 - Create interface and mark it as connected"
+- name: 12 - Create interface and mark it as connected
   netbox.netbox.netbox_device_interface:
-    netbox_url: "http://localhost:32768"
+    netbox_url: http://localhost:32768
     netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       device: test100
@@ -300,7 +300,7 @@
       mark_connected: true
   register: test_twelve
 
-- name: "12- ASSERT"
+- name: 12- ASSERT
   ansible.builtin.assert:
     that:
       - test_twelve is changed

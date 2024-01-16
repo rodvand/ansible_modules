@@ -7,7 +7,7 @@
 - name: "DEVICE_TYPE 1: Necessary info creation"
   netbox.netbox.netbox_device_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       slug: test-device-type
       model: ws-test-3750
@@ -29,10 +29,10 @@
 - name: "DEVICE_TYPE 2: Create duplicate"
   netbox.netbox.netbox_device_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       slug: test-device-type
-      model: "ws-test-3750"
+      model: ws-test-3750
       manufacturer: Test Manufacturer
     state: present
   register: test_two
@@ -49,7 +49,7 @@
 - name: "DEVICE_TYPE 3: ASSERT - Update"
   netbox.netbox.netbox_device_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       slug: test-device-type
       model: ws-test-3750
@@ -79,7 +79,7 @@
 - name: "DEVICE_TYPE 4: ASSERT - Delete"
   netbox.netbox.netbox_device_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       model: test-device-type
     state: absent
@@ -96,9 +96,9 @@
 - name: "DEVICE_TYPE 5: ASSERT - Delete non existing"
   netbox.netbox.netbox_device_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      model: "Test Device Type"
+      model: Test Device Type
     state: absent
   register: test_five
 
@@ -112,11 +112,11 @@
 - name: "DEVICE_TYPE 6: Without Slug"
   netbox.netbox.netbox_device_type:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      model: "WS Test 3850"
-      manufacturer: "Test Manufacturer"
-      subdevice_role: "parent"
+      model: WS Test 3850
+      manufacturer: Test Manufacturer
+      subdevice_role: parent
     state: present
   register: test_six
 

@@ -7,10 +7,10 @@
 - name: "VIRTUAL_MACHINE 1: Necessary info creation"
   netbox.netbox.netbox_virtual_machine:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VM One"
-      cluster: "Test Cluster"
+      name: Test VM One
+      cluster: Test Cluster
     state: present
   register: test_one
 
@@ -27,10 +27,10 @@
 - name: "VIRTUAL_MACHINE 2: Create duplicate"
   netbox.netbox.netbox_virtual_machine:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VM One"
-      cluster: "Test Cluster"
+      name: Test VM One
+      cluster: Test Cluster
     state: present
   register: test_two
 
@@ -45,16 +45,16 @@
 - name: "VIRTUAL_MACHINE 3: Update"
   netbox.netbox.netbox_virtual_machine:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VM One"
-      cluster: "Test Cluster"
+      name: Test VM One
+      cluster: Test Cluster
       vcpus: 8.5
       memory: 8
-      status: "Planned"
-      virtual_machine_role: "Test VM Role"
+      status: Planned
+      virtual_machine_role: Test VM Role
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: test_three
 
@@ -79,16 +79,16 @@
 - name: "VIRTUAL_MACHINE 4: Test idempotence"
   netbox.netbox.netbox_virtual_machine:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VM One"
-      cluster: "Test Cluster"
+      name: Test VM One
+      cluster: Test Cluster
       vcpus: 8.5
       memory: 8
-      status: "Planned"
-      virtual_machine_role: "Test VM Role"
+      status: Planned
+      virtual_machine_role: Test VM Role
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: test_four_idempotence
 
@@ -108,9 +108,9 @@
 - name: "VIRTUAL_MACHINE 5: Delete"
   netbox.netbox.netbox_virtual_machine:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VM One"
+      name: Test VM One
     state: absent
   register: test_five
 

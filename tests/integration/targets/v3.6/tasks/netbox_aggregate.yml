@@ -7,10 +7,10 @@
 - name: "AGGREGATE 1: Necessary info creation"
   netbox.netbox.netbox_aggregate:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      prefix: "10.0.0.0/8"
-      rir: "Example RIR"
+      prefix: 10.0.0.0/8
+      rir: Example RIR
     state: present
   register: test_one
 
@@ -28,9 +28,9 @@
 - name: "AGGREGATE 2: Create duplicate"
   netbox.netbox.netbox_aggregate:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      prefix: "10.0.0.0/8"
+      prefix: 10.0.0.0/8
     state: present
   register: test_two
 
@@ -46,14 +46,14 @@
 - name: "AGGREGATE 3: ASSERT - Update"
   netbox.netbox.netbox_aggregate:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      prefix: "10.0.0.0/8"
-      rir: "Example RIR"
+      prefix: 10.0.0.0/8
+      rir: Example RIR
       date_added: "1989-01-18"
-      description: "Test Description"
+      description: Test Description
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: test_three
 
@@ -75,9 +75,9 @@
 - name: "AGGREGATE 4: ASSERT - Delete"
   netbox.netbox.netbox_aggregate:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      prefix: "10.0.0.0/8"
+      prefix: 10.0.0.0/8
     state: absent
   register: test_four
 
@@ -96,10 +96,10 @@
 - name: "AGGREGATE 5: Necessary info creation"
   netbox.netbox.netbox_aggregate:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      prefix: "2001::/32"
-      rir: "Example RIR"
+      prefix: 2001::/32
+      rir: Example RIR
     state: present
   register: test_five
 

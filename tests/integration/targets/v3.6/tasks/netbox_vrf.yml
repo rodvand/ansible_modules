@@ -7,7 +7,7 @@
 - name: "VRF 1: Necessary info creation"
   netbox.netbox.netbox_vrf:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test VRF One
     state: present
@@ -25,7 +25,7 @@
 - name: "VRF 2: Create duplicate"
   netbox.netbox.netbox_vrf:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test VRF One
     state: present
@@ -41,7 +41,7 @@
 - name: "VRF 3: Create VRF with same name, but different tenant"
   netbox.netbox.netbox_vrf:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test VRF One
       tenant: Test Tenant
@@ -61,20 +61,20 @@
 - name: "VRF 4: ASSERT - Update"
   netbox.netbox.netbox_vrf:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VRF One"
+      name: Test VRF One
       rd: "65001:1"
-      enforce_unique: False
-      tenant: "Test Tenant"
+      enforce_unique: false
+      tenant: Test Tenant
       description: Updated description
       import_targets:
-        - "4000:4000"
-        - "5000:5000"
+        - 4000:4000
+        - 5000:5000
       export_targets:
-        - "5000:5000"
+        - 5000:5000
       tags:
-        - "Schnozzberry"
+        - Schnozzberry
     state: present
   register: test_four
 
@@ -101,11 +101,11 @@
 - name: "VRF 5: ASSERT - Delete more than one result"
   netbox.netbox.netbox_vrf:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VRF One"
+      name: Test VRF One
     state: absent
-  ignore_errors: yes
+  ignore_errors: true
   register: test_five
 
 - name: "VRF 5: ASSERT - Delete more than one result"
@@ -117,9 +117,9 @@
 - name: "VRF 6: ASSERT - Delete"
   netbox.netbox.netbox_vrf:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test VRF One"
+      name: Test VRF One
       tenant: Test Tenant
     state: absent
   register: test_six

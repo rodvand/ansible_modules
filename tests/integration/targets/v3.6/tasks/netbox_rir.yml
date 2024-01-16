@@ -7,7 +7,7 @@
 - name: "RIR 1: Necessary info creation"
   netbox.netbox.netbox_rir:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test RIR One
     state: present
@@ -26,7 +26,7 @@
 - name: "RIR 2: Create duplicate"
   netbox.netbox.netbox_rir:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
       name: Test RIR One
     state: present
@@ -43,9 +43,9 @@
 - name: "RIR 3: ASSERT - Update"
   netbox.netbox.netbox_rir:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test RIR One"
+      name: Test RIR One
       is_private: true
     state: present
   register: test_three
@@ -63,9 +63,9 @@
 - name: "RIR 4: ASSERT - Delete"
   netbox.netbox.netbox_rir:
     netbox_url: http://localhost:32768
-    netbox_token: 0123456789abcdef0123456789abcdef01234567
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
     data:
-      name: "Test RIR One"
+      name: Test RIR One
     state: absent
   register: test_four
 
