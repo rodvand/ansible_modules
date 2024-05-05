@@ -16,7 +16,7 @@ jobs:
         uses: psf/black@stable
 
       - name: 'Yamllint'
-        uses: karancode/yamllint-github-action@master      
+        uses: karancode/yamllint-github-action@master
 
   unit_testing:
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
       matrix:
         include:
           - VERSION: "v4.0"
-            NETBOX_DOCKER_VERSION: 2.8.0        
+            NETBOX_DOCKER_VERSION: 2.8.0
 
     steps:
       - name: Checkout repo
@@ -127,3 +127,4 @@ jobs:
           ansible-test integration -v --color --coverage --python ${{ env.python-version }} ${{ matrix.VERSION }}
           ansible-test coverage report --all --omit "tests/*,hacking/*,docs/*" --show-missing
         working-directory: /home/runner/.ansible/collections/ansible_collections/netbox/netbox
+        
