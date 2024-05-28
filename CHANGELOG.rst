@@ -4,6 +4,18 @@ NetBox.NetBox Release Notes
 
 .. contents:: Topics
 
+v3.19.0
+=======
+
+Minor Changes
+-------------
+
+- Extend query parameters allowed for parent_loaction [#1235](https://github.com/netbox-community/ansible_modules/pull/1235)
+- nb_inventory - Add cluster device to response [#1219](https://github.com/netbox-community/ansible_modules/pull/1219)
+- netbox_custom_field, netbox_custom_link, netbox_export_template - Add object_type for NetBox 4.0 support [#1234](https://github.com/netbox-community/ansible_modules/pull/1234)
+- netbox_power_outlet - Add label option [#1222](https://github.com/netbox-community/ansible_modules/pull/1222)
+- netbox_power_outlet - Add outlet type to list [#1231](https://github.com/netbox-community/ansible_modules/pull/1231)
+- netbox_power_outlet_template - Add outlet type to list [#1232](https://github.com/netbox-community/ansible_modules/pull/1232)
 
 v3.18.0
 =======
@@ -410,8 +422,8 @@ v3.1.2
 Release Summary
 ---------------
 
-This release focuses on ansible-core 2.11 compatibility, general CI fixes for NetBox 2.10-2.11, and doc updates.
-This release works with NetBox 3.0, but needs further investigation with regards to idopmentcy (nothing really major) & some CI.
+This release focuses on ansible-core 2.11 compatibility, general CI fixes for NetBox 2.10-2.11, and doc updates. 
+This release works with NetBox 3.0, but needs further investigation with regards to idopmentcy (nothing really major) & some CI. 
 The next release will idenify and resolve any issues with NetBox 3.0.
 
 Minor Changes
@@ -448,7 +460,6 @@ Release Summary
 
 This release should fix obvious broken changes between collection and NetBox 2.11, but there is most likely more. Please report as they're encountered.
 **packages** is now a required Python package and is already included in Ansible 2.10, but anyone using Ansible 2.9 or below must manually pip install the library.
-
 
 Major Changes
 -------------
