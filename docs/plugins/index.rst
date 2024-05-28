@@ -1,7 +1,7 @@
 
 
 .. meta::
-  :antsibull-docs: 2.11.0
+  :antsibull-docs: 2.7.0
 
 
 .. _plugins_in_netbox.netbox:
@@ -9,7 +9,7 @@
 Netbox.Netbox
 =============
 
-Collection version 3.18.0
+Collection version 3.17.0
 
 .. contents::
    :local:
@@ -27,7 +27,7 @@ This is a collection of NetBox Ansible modules
 
 **Supported ansible-core versions:**
 
-* 2.15.0 or newer
+* 2.9.10 or newer
 
 .. ansible-links::
 
@@ -43,6 +43,7 @@ This is a collection of NetBox Ansible modules
 
 .. toctree::
     :maxdepth: 1
+
 
 Plugin Index
 ------------
