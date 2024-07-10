@@ -35,7 +35,6 @@ load_relative_test_data = partial(
 
 
 class MockInventory:
-
     def __init__(self):
         self.variables = {}
 
