@@ -328,3 +328,8 @@
   ansible.builtin.include_tasks: netbox_virtual_disk.yml
   tags:
     - netbox_virtual_disk
+
+- name: NETBOX_DATA_SOURCE
+  ansible.builtin.include_tasks: netbox_data_source.yml
+  tags:
+    - netbox_data_source

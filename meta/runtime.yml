@@ -29,6 +29,7 @@ action_groups:
     - netbox_contact_role
     - netbox_custom_field
     - netbox_custom_link
+    - netbox_data_source
     - netbox_device
     - netbox_device_bay
     - netbox_device_bay_template
