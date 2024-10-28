@@ -96,7 +96,7 @@ jobs:
           python-version: ${{ env.python-version }}
 
       - name: Install and configure Poetry
-        uses: snok/install-poetry@v1.3.4
+        uses: snok/install-poetry@v1
         with:
           virtualenvs-create: false
 
