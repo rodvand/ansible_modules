@@ -143,7 +143,7 @@ def main():
                     user=dict(required=False, type="raw"),
                     tenant=dict(required=False, type="raw"),
                     location=dict(required=False, type="raw"),
-                    description=dict(required=False, type="str"),
+                    description=dict(required=True, type="str"),
                     comments=dict(required=False, type="str"),
                     tags=dict(required=False, type="list", elements="raw"),
                     custom_fields=dict(required=False, type="dict"),
@@ -153,7 +153,7 @@ def main():
     )
 
     required_if = [
-        ("state", "present", ["rack", "units", "description"]),
+        ("state", "present", ["rack", "description"]),
         ("state", "absent", ["rack", "description"]),
     ]
 
