@@ -37,7 +37,7 @@ options:
       units:
         description:
           - The units in the rack
-        required: true
+        required: false
         type: list
         elements: raw        
       user:
