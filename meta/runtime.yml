@@ -67,6 +67,7 @@ action_groups:
     - netbox_provider
     - netbox_provider_network
     - netbox_rack
+    - netbox_rack_reservation
     - netbox_rack_group
     - netbox_rack_role
     - netbox_rear_port

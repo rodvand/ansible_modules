@@ -43,6 +43,7 @@ NB_POWER_PANELS = "power_panels"
 NB_POWER_PORTS = "power_ports"
 NB_POWER_PORT_TEMPLATES = "power_port_templates"
 NB_RACKS = "racks"
+NB_RACK_RESERVATIONS = "rack_reservations"
 NB_RACK_ROLES = "rack_roles"
 NB_RACK_GROUPS = "rack_groups"
 NB_REAR_PORTS = "rear_ports"
@@ -202,6 +203,18 @@ class NetboxDcimModule(NetboxModule):
         # Make color params lowercase
         if data.get("color"):
             data["color"] = data["color"].lower()
+
+        if self.endpoint == "rack_reservations":
+            rack = data["rack"]
+            unit = data["units"]
+            description = data["description"]
+            object_query_params = self._build_query_params(
+                endpoint_name, data, user_query_params
+            )
+            name = "%s: %s (%s)" % (rack, unit, description)
+            self.nb_object = self._nb_endpoint_get(
+                nb_endpoint, object_query_params, name
+            )
 
         if self.endpoint == "cables":
             if Version(self.full_version) >= Version("3.0.6"):
