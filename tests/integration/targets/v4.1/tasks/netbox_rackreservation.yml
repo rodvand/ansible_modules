@@ -1,0 +1,110 @@
+---
+##
+##
+### NETBOX_RACKRESERVATION
+##
+##
+- name: 1 - Test rack reservation creation
+  netbox.netbox.netbox_rackreservation:
+    netbox_url: http://localhost:32768
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
+    data:
+      rack: Test Rack
+      units: [1, 2, 3]
+      user: admin
+      description: "Test reservation"
+  register: test_one
+
+- name: 1 - ASSERT
+  ansible.builtin.assert:
+    that:
+      - test_one is changed
+      - test_one['diff']['before']['state'] == "absent"
+      - test_one['diff']['after']['state'] == "present"
+      - test_one['rackreservation']['rack'] == 1
+      - test_one['rackreservation']['user'] == 1
+
+- name: Test duplicate rack reservation
+  netbox.netbox.netbox_rackreservation:
+    netbox_url: http://localhost:32768
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
+    data:
+      rack: Test Rack
+      units: [1, 2, 3]
+      user: admin
+  register: test_two
+
+- name: 2 - ASSERT
+  ansible.builtin.assert:
+    that:
+      - not test_two['changed']
+      - test_two['rackreservation']['rack'] == 1
+      - test_two['rackreservation']['user'] == 1
+      - test_two['msg'] == "rackreservation already exists"
+
+- name: 3 - Create new rack reservation with different units
+  netbox.netbox.netbox_rackreservation:
+    netbox_url: http://localhost:32768
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
+    data:
+      rack: Test Rack
+      units: [4, 5, 6]
+      user: admin
+      description: "Another test reservation"
+    state: present
+  register: test_three
+
+- name: 3 - ASSERT
+  ansible.builtin.assert:
+    that:
+      - test_three is changed
+      - test_three['diff']['before']['state'] == "absent"
+      - test_three['diff']['after']['state'] == "present"
+      - test_three['rackreservation']['rack'] == 1
+      - test_three['rackreservation']['user'] == 1
+      - test_three['msg'] == "rackreservation created"
+
+- name: 4 - Update reservation with tenant and tags
+  netbox.netbox.netbox_rackreservation:
+    netbox_url: http://localhost:32768
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
+    data:
+      rack: Test Rack
+      units: [1, 2, 3]
+      user: admin
+      tenant: Test Tenant
+      description: "Updated reservation"
+      tags:
+        - Schnozzberry
+    state: present
+  register: test_four
+
+- name: 4 - ASSERT
+  ansible.builtin.assert:
+    that:
+      - test_four is changed
+      - test_four['rackreservation']['rack'] == 1
+      - test_four['rackreservation']['user'] == 1
+      - test_four['rackreservation']['tenant'] == 1
+      - test_four['rackreservation']['description'] == "Updated reservation"
+      - test_four['rackreservation']['tags'][0] == 4
+      - test_four['msg'] == "rackreservation updated"
+
+- name: 5 - Test delete
+  netbox.netbox.netbox_rackreservation:
+    netbox_url: http://localhost:32768
+    netbox_token: "0123456789abcdef0123456789abcdef01234567"
+    data:
+      rack: Test Rack
+      units: [1, 2, 3]
+      user: admin
+    state: absent
+  register: test_five
+
+- name: 5 - ASSERT
+  ansible.builtin.assert:
+    that:
+      - test_five is changed
+      - test_five['diff']['before']['state'] == "present"
+      - test_five['diff']['after']['state'] == "absent"
+      - test_five['msg'] == "rackreservation deleted"
