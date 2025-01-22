@@ -196,15 +196,9 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -220,15 +214,9 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -244,15 +232,9 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -268,15 +250,9 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -306,8 +282,8 @@
         "hosts": [
             "R1-Device",
             "Test Nexus One",
-            "TestDeviceR1",
             "test100",
+            "TestDeviceR1",
             "Test VM With Spaces",
             "test100-vm",
             "test101-vm",
@@ -343,23 +319,23 @@
         "hosts": [
             "R1-Device",
             "Test Nexus One",
-            "TestDeviceR1",
-            "test100"
+            "test100",
+            "TestDeviceR1"
         ]
     },
     "cisco_test": {
         "hosts": [
             "R1-Device",
-            "TestDeviceR1",
-            "test100"
+            "test100",
+            "TestDeviceR1"
         ]
     },
     "core_switch": {
         "hosts": [
             "R1-Device",
             "Test Nexus One",
-            "TestDeviceR1",
-            "test100"
+            "test100",
+            "TestDeviceR1"
         ]
     },
     "is_virtual": {
@@ -413,8 +389,8 @@
     "test_rack_group": {
         "hosts": [
             "Test Nexus One",
-            "TestDeviceR1",
-            "test100"
+            "test100",
+            "TestDeviceR1"
         ]
     },
     "test_rack_role": {
@@ -430,12 +406,6 @@
     "test_site": {
         "children": [
             "parent_rack_group"
-        ],
-        "hosts": [
-            "test100-vm",
-            "test101-vm",
-            "test102-vm",
-            "test103-vm"
         ]
     },
     "test_site2": {

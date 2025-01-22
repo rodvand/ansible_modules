@@ -13,7 +13,70 @@
                 "device_types": [
                     "cisco-test"
                 ],
-                "interfaces": [],
+                "interfaces": [
+                    {
+                        "_occupied": false,
+                        "bridge": null,
+                        "cable": null,
+                        "cable_end": null,
+                        "connected_endpoints": null,
+                        "connected_endpoints_reachable": null,
+                        "connected_endpoints_type": null,
+                        "count_fhrp_groups": 0,
+                        "count_ipaddresses": 0,
+                        "custom_fields": {},
+                        "description": "",
+                        "device": {
+                            "description": "",
+                            "display": "R1-Device (345678901)",
+                            "id": 3,
+                            "name": "R1-Device"
+                        },
+                        "display": "port-channel1",
+                        "display_url": "http://localhost:32768/dcim/interfaces/11/",
+                        "duplex": null,
+                        "enabled": true,
+                        "id": 11,
+                        "ip_addresses": [],
+                        "l2vpn_termination": null,
+                        "label": "",
+                        "lag": null,
+                        "link_peers": [],
+                        "link_peers_type": null,
+                        "mac_address": null,
+                        "mac_addresses": [],
+                        "mark_connected": false,
+                        "mgmt_only": false,
+                        "mode": null,
+                        "module": null,
+                        "mtu": null,
+                        "name": "port-channel1",
+                        "parent": null,
+                        "poe_mode": null,
+                        "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
+                        "rf_channel": null,
+                        "rf_channel_frequency": null,
+                        "rf_channel_width": null,
+                        "rf_role": null,
+                        "speed": null,
+                        "tagged_vlans": [],
+                        "tags": [],
+                        "tx_power": null,
+                        "type": {
+                            "label": "Link Aggregation Group (LAG)",
+                            "value": "lag"
+                        },
+                        "untagged_vlan": null,
+                        "vdcs": [],
+                        "vlan_translation_policy": null,
+                        "vrf": null,
+                        "wireless_lans": [],
+                        "wireless_link": null,
+                        "wwn": null
+                    }
+                ],
                 "is_virtual": false,
                 "local_context_data": [
                     null
@@ -57,7 +120,7 @@
                         "_occupied": false,
                         "bridge": null,
                         "cable": null,
-                        "cable_end": "",
+                        "cable_end": null,
                         "connected_endpoints": null,
                         "connected_endpoints_reachable": null,
                         "connected_endpoints_type": null,
@@ -108,6 +171,14 @@
                         "link_peers": [],
                         "link_peers_type": null,
                         "mac_address": null,
+                        "mac_addresses": [
+                            {
+                                "description": "Test MAC address",
+                                "display": "AA:BB:CC:DD:EE:F0",
+                                "id": 4,
+                                "mac_address": "AA:BB:CC:DD:EE:F0"
+                            }
+                        ],
                         "mark_connected": false,
                         "mgmt_only": false,
                         "mode": null,
@@ -117,6 +188,8 @@
                         "parent": null,
                         "poe_mode": null,
                         "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "rf_channel": null,
                         "rf_channel_frequency": null,
                         "rf_channel_width": null,
@@ -131,6 +204,7 @@
                         },
                         "untagged_vlan": null,
                         "vdcs": [],
+                        "vlan_translation_policy": null,
                         "vrf": null,
                         "wireless_lans": [],
                         "wireless_link": null,
@@ -140,7 +214,7 @@
                         "_occupied": false,
                         "bridge": null,
                         "cable": null,
-                        "cable_end": "",
+                        "cable_end": null,
                         "connected_endpoints": null,
                         "connected_endpoints_reachable": null,
                         "connected_endpoints_type": null,
@@ -191,6 +265,7 @@
                         "link_peers": [],
                         "link_peers_type": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mark_connected": false,
                         "mgmt_only": false,
                         "mode": null,
@@ -200,6 +275,8 @@
                         "parent": null,
                         "poe_mode": null,
                         "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "rf_channel": null,
                         "rf_channel_frequency": null,
                         "rf_channel_width": null,
@@ -214,6 +291,7 @@
                         },
                         "untagged_vlan": null,
                         "vdcs": [],
+                        "vlan_translation_policy": null,
                         "vrf": null,
                         "wireless_lans": [],
                         "wireless_link": null,
@@ -223,7 +301,7 @@
                         "_occupied": false,
                         "bridge": null,
                         "cable": null,
-                        "cable_end": "",
+                        "cable_end": null,
                         "connected_endpoints": null,
                         "connected_endpoints_reachable": null,
                         "connected_endpoints_type": null,
@@ -249,6 +327,7 @@
                         "link_peers": [],
                         "link_peers_type": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mark_connected": false,
                         "mgmt_only": false,
                         "mode": null,
@@ -258,6 +337,8 @@
                         "parent": null,
                         "poe_mode": null,
                         "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "rf_channel": null,
                         "rf_channel_frequency": null,
                         "rf_channel_width": null,
@@ -272,6 +353,7 @@
                         },
                         "untagged_vlan": null,
                         "vdcs": [],
+                        "vlan_translation_policy": null,
                         "vrf": null,
                         "wireless_lans": [],
                         "wireless_link": null,
@@ -353,10 +435,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth0",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -366,6 +451,7 @@
                             "id": 6,
                             "name": "Test VM With Spaces"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -381,10 +467,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth1",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -394,6 +483,7 @@
                             "id": 6,
                             "name": "Test VM With Spaces"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     }
                 ],
@@ -501,7 +591,7 @@
                         "_occupied": false,
                         "bridge": null,
                         "cable": null,
-                        "cable_end": "",
+                        "cable_end": null,
                         "connected_endpoints": null,
                         "connected_endpoints_reachable": null,
                         "connected_endpoints_type": null,
@@ -552,6 +642,14 @@
                         "link_peers": [],
                         "link_peers_type": null,
                         "mac_address": null,
+                        "mac_addresses": [
+                            {
+                                "description": "",
+                                "display": "AA:BB:CC:DD:EE:FF",
+                                "id": 1,
+                                "mac_address": "AA:BB:CC:DD:EE:FF"
+                            }
+                        ],
                         "mark_connected": false,
                         "mgmt_only": false,
                         "mode": null,
@@ -561,6 +659,8 @@
                         "parent": null,
                         "poe_mode": null,
                         "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "rf_channel": null,
                         "rf_channel_frequency": null,
                         "rf_channel_width": null,
@@ -575,6 +675,7 @@
                         },
                         "untagged_vlan": null,
                         "vdcs": [],
+                        "vlan_translation_policy": null,
                         "vrf": null,
                         "wireless_lans": [],
                         "wireless_link": null,
@@ -584,7 +685,7 @@
                         "_occupied": false,
                         "bridge": null,
                         "cable": null,
-                        "cable_end": "",
+                        "cable_end": null,
                         "connected_endpoints": null,
                         "connected_endpoints_reachable": null,
                         "connected_endpoints_type": null,
@@ -634,7 +735,15 @@
                         "lag": null,
                         "link_peers": [],
                         "link_peers_type": null,
-                        "mac_address": null,
+                        "mac_address": "AA:AB:CC:DD:EE:FF",
+                        "mac_addresses": [
+                            {
+                                "description": "",
+                                "display": "AA:AB:CC:DD:EE:FF",
+                                "id": 2,
+                                "mac_address": "AA:AB:CC:DD:EE:FF"
+                            }
+                        ],
                         "mark_connected": false,
                         "mgmt_only": false,
                         "mode": null,
@@ -644,6 +753,13 @@
                         "parent": null,
                         "poe_mode": null,
                         "poe_type": null,
+                        "primary_mac_address": {
+                            "description": "",
+                            "display": "AA:AB:CC:DD:EE:FF",
+                            "id": 2,
+                            "mac_address": "AA:AB:CC:DD:EE:FF"
+                        },
+                        "qinq_svlan": null,
                         "rf_channel": null,
                         "rf_channel_frequency": null,
                         "rf_channel_width": null,
@@ -658,6 +774,7 @@
                         },
                         "untagged_vlan": null,
                         "vdcs": [],
+                        "vlan_translation_policy": null,
                         "vrf": null,
                         "wireless_lans": [],
                         "wireless_link": null,
@@ -667,7 +784,7 @@
                         "_occupied": false,
                         "bridge": null,
                         "cable": null,
-                        "cable_end": "",
+                        "cable_end": null,
                         "connected_endpoints": null,
                         "connected_endpoints_reachable": null,
                         "connected_endpoints_type": null,
@@ -693,6 +810,7 @@
                         "link_peers": [],
                         "link_peers_type": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mark_connected": false,
                         "mgmt_only": false,
                         "mode": null,
@@ -702,6 +820,8 @@
                         "parent": null,
                         "poe_mode": null,
                         "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "rf_channel": null,
                         "rf_channel_frequency": null,
                         "rf_channel_width": null,
@@ -716,6 +836,314 @@
                         },
                         "untagged_vlan": null,
                         "vdcs": [],
+                        "vlan_translation_policy": null,
+                        "vrf": null,
+                        "wireless_lans": [],
+                        "wireless_link": null,
+                        "wwn": null
+                    },
+                    {
+                        "_occupied": false,
+                        "bridge": null,
+                        "cable": null,
+                        "cable_end": null,
+                        "connected_endpoints": null,
+                        "connected_endpoints_reachable": null,
+                        "connected_endpoints_type": null,
+                        "count_fhrp_groups": 0,
+                        "count_ipaddresses": 0,
+                        "custom_fields": {},
+                        "description": "",
+                        "device": {
+                            "description": "",
+                            "display": "test100 (123456789)",
+                            "id": 1,
+                            "name": "test100"
+                        },
+                        "display": "port-channel1",
+                        "display_url": "http://localhost:32768/dcim/interfaces/8/",
+                        "duplex": null,
+                        "enabled": true,
+                        "id": 8,
+                        "ip_addresses": [],
+                        "l2vpn_termination": null,
+                        "label": "",
+                        "lag": null,
+                        "link_peers": [],
+                        "link_peers_type": null,
+                        "mac_address": null,
+                        "mac_addresses": [],
+                        "mark_connected": false,
+                        "mgmt_only": false,
+                        "mode": {
+                            "label": "Access",
+                            "value": "access"
+                        },
+                        "module": null,
+                        "mtu": 1600,
+                        "name": "port-channel1",
+                        "parent": null,
+                        "poe_mode": null,
+                        "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
+                        "rf_channel": null,
+                        "rf_channel_frequency": null,
+                        "rf_channel_width": null,
+                        "rf_role": null,
+                        "speed": null,
+                        "tagged_vlans": [],
+                        "tags": [],
+                        "tx_power": null,
+                        "type": {
+                            "label": "Link Aggregation Group (LAG)",
+                            "value": "lag"
+                        },
+                        "untagged_vlan": null,
+                        "vdcs": [],
+                        "vlan_translation_policy": null,
+                        "vrf": null,
+                        "wireless_lans": [],
+                        "wireless_link": null,
+                        "wwn": null
+                    },
+                    {
+                        "_occupied": false,
+                        "bridge": null,
+                        "cable": null,
+                        "cable_end": null,
+                        "connected_endpoints": null,
+                        "connected_endpoints_reachable": null,
+                        "connected_endpoints_type": null,
+                        "count_fhrp_groups": 0,
+                        "count_ipaddresses": 0,
+                        "custom_fields": {},
+                        "description": "",
+                        "device": {
+                            "description": "",
+                            "display": "test100 (123456789)",
+                            "id": 1,
+                            "name": "test100"
+                        },
+                        "display": "GigabitEthernet3",
+                        "display_url": "http://localhost:32768/dcim/interfaces/9/",
+                        "duplex": null,
+                        "enabled": false,
+                        "id": 9,
+                        "ip_addresses": [],
+                        "l2vpn_termination": null,
+                        "label": "",
+                        "lag": {
+                            "_occupied": false,
+                            "cable": null,
+                            "device": {
+                                "display": "test100 (123456789)",
+                                "display_url": "http://localhost:32768/dcim/devices/1/",
+                                "id": 1,
+                                "name": "test100"
+                            },
+                            "display": "port-channel1",
+                            "display_url": "http://localhost:32768/dcim/interfaces/8/",
+                            "id": 8,
+                            "name": "port-channel1"
+                        },
+                        "link_peers": [],
+                        "link_peers_type": null,
+                        "mac_address": null,
+                        "mac_addresses": [],
+                        "mark_connected": false,
+                        "mgmt_only": false,
+                        "mode": {
+                            "label": "Access",
+                            "value": "access"
+                        },
+                        "module": null,
+                        "mtu": 1600,
+                        "name": "GigabitEthernet3",
+                        "parent": null,
+                        "poe_mode": null,
+                        "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
+                        "rf_channel": null,
+                        "rf_channel_frequency": null,
+                        "rf_channel_width": null,
+                        "rf_role": null,
+                        "speed": null,
+                        "tagged_vlans": [],
+                        "tags": [],
+                        "tx_power": null,
+                        "type": {
+                            "label": "1000BASE-T (1GE)",
+                            "value": "1000base-t"
+                        },
+                        "untagged_vlan": null,
+                        "vdcs": [],
+                        "vlan_translation_policy": null,
+                        "vrf": null,
+                        "wireless_lans": [],
+                        "wireless_link": null,
+                        "wwn": null
+                    },
+                    {
+                        "_occupied": false,
+                        "bridge": null,
+                        "cable": null,
+                        "cable_end": null,
+                        "connected_endpoints": null,
+                        "connected_endpoints_reachable": null,
+                        "connected_endpoints_type": null,
+                        "count_fhrp_groups": 0,
+                        "count_ipaddresses": 0,
+                        "custom_fields": {},
+                        "description": "",
+                        "device": {
+                            "description": "",
+                            "display": "test100 (123456789)",
+                            "id": 1,
+                            "name": "test100"
+                        },
+                        "display": "GigabitEthernet21",
+                        "display_url": "http://localhost:32768/dcim/interfaces/10/",
+                        "duplex": null,
+                        "enabled": false,
+                        "id": 10,
+                        "ip_addresses": [],
+                        "l2vpn_termination": null,
+                        "label": "",
+                        "lag": null,
+                        "link_peers": [],
+                        "link_peers_type": null,
+                        "mac_address": null,
+                        "mac_addresses": [],
+                        "mark_connected": false,
+                        "mgmt_only": true,
+                        "mode": {
+                            "label": "Tagged",
+                            "value": "tagged"
+                        },
+                        "module": null,
+                        "mtu": 1600,
+                        "name": "GigabitEthernet21",
+                        "parent": null,
+                        "poe_mode": null,
+                        "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
+                        "rf_channel": null,
+                        "rf_channel_frequency": null,
+                        "rf_channel_width": null,
+                        "rf_role": null,
+                        "speed": null,
+                        "tagged_vlans": [
+                            {
+                                "description": "",
+                                "display": "Data (200)",
+                                "id": 2,
+                                "name": "Data",
+                                "vid": 200
+                            },
+                            {
+                                "description": "",
+                                "display": "VoIP (300)",
+                                "id": 3,
+                                "name": "VoIP",
+                                "vid": 300
+                            }
+                        ],
+                        "tags": [],
+                        "tx_power": null,
+                        "type": {
+                            "label": "1000BASE-T (1GE)",
+                            "value": "1000base-t"
+                        },
+                        "untagged_vlan": {
+                            "description": "",
+                            "display": "Wireless (100)",
+                            "id": 1,
+                            "name": "Wireless",
+                            "vid": 100
+                        },
+                        "vdcs": [],
+                        "vlan_translation_policy": null,
+                        "vrf": null,
+                        "wireless_lans": [],
+                        "wireless_link": null,
+                        "wwn": null
+                    },
+                    {
+                        "_occupied": false,
+                        "bridge": null,
+                        "cable": null,
+                        "cable_end": null,
+                        "connected_endpoints": null,
+                        "connected_endpoints_reachable": null,
+                        "connected_endpoints_type": null,
+                        "count_fhrp_groups": 0,
+                        "count_ipaddresses": 0,
+                        "custom_fields": {},
+                        "description": "",
+                        "device": {
+                            "description": "",
+                            "display": "test100 (123456789)",
+                            "id": 1,
+                            "name": "test100"
+                        },
+                        "display": "GigabitEthernet4",
+                        "display_url": "http://localhost:32768/dcim/interfaces/12/",
+                        "duplex": null,
+                        "enabled": false,
+                        "id": 12,
+                        "ip_addresses": [],
+                        "l2vpn_termination": null,
+                        "label": "",
+                        "lag": {
+                            "_occupied": false,
+                            "cable": null,
+                            "device": {
+                                "display": "test100 (123456789)",
+                                "display_url": "http://localhost:32768/dcim/devices/1/",
+                                "id": 1,
+                                "name": "test100"
+                            },
+                            "display": "port-channel1",
+                            "display_url": "http://localhost:32768/dcim/interfaces/8/",
+                            "id": 8,
+                            "name": "port-channel1"
+                        },
+                        "link_peers": [],
+                        "link_peers_type": null,
+                        "mac_address": null,
+                        "mac_addresses": [],
+                        "mark_connected": false,
+                        "mgmt_only": false,
+                        "mode": {
+                            "label": "Access",
+                            "value": "access"
+                        },
+                        "module": null,
+                        "mtu": 1600,
+                        "name": "GigabitEthernet4",
+                        "parent": null,
+                        "poe_mode": null,
+                        "poe_type": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
+                        "rf_channel": null,
+                        "rf_channel_frequency": null,
+                        "rf_channel_width": null,
+                        "rf_role": null,
+                        "speed": null,
+                        "tagged_vlans": [],
+                        "tags": [],
+                        "tx_power": null,
+                        "type": {
+                            "label": "1000BASE-T (1GE)",
+                            "value": "1000base-t"
+                        },
+                        "untagged_vlan": null,
+                        "vdcs": [],
+                        "vlan_translation_policy": null,
                         "vrf": null,
                         "wireless_lans": [],
                         "wireless_link": null,
@@ -848,10 +1276,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth0",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -861,6 +1292,7 @@
                             "id": 1,
                             "name": "test100-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -876,10 +1308,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth1",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -889,6 +1324,7 @@
                             "id": 1,
                             "name": "test100-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -904,10 +1340,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth2",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -917,6 +1356,7 @@
                             "id": 1,
                             "name": "test100-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -932,10 +1372,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth3",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -945,6 +1388,7 @@
                             "id": 1,
                             "name": "test100-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -960,10 +1404,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth4",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -973,6 +1420,7 @@
                             "id": 1,
                             "name": "test100-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     }
                 ],
@@ -981,16 +1429,10 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "services": [],
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -1019,10 +1461,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth0",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -1032,6 +1477,7 @@
                             "id": 2,
                             "name": "test101-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -1047,10 +1493,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth1",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -1060,6 +1509,7 @@
                             "id": 2,
                             "name": "test101-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -1075,10 +1525,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth2",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -1088,6 +1541,7 @@
                             "id": 2,
                             "name": "test101-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -1103,10 +1557,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth3",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -1116,6 +1573,7 @@
                             "id": 2,
                             "name": "test101-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     },
                     {
@@ -1131,10 +1589,13 @@
                         "ip_addresses": [],
                         "l2vpn_termination": null,
                         "mac_address": null,
+                        "mac_addresses": [],
                         "mode": null,
                         "mtu": null,
                         "name": "Eth4",
                         "parent": null,
+                        "primary_mac_address": null,
+                        "qinq_svlan": null,
                         "tagged_vlans": [],
                         "tags": [],
                         "untagged_vlan": null,
@@ -1144,6 +1605,7 @@
                             "id": 2,
                             "name": "test101-vm"
                         },
+                        "vlan_translation_policy": null,
                         "vrf": null
                     }
                 ],
@@ -1152,16 +1614,10 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "services": [],
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -1182,16 +1638,10 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "services": [],
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -1212,16 +1662,10 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "services": [],
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -1312,15 +1756,15 @@
         "hosts": [
             "R1-Device",
             "Test Nexus One",
-            "TestDeviceR1",
-            "test100"
+            "test100",
+            "TestDeviceR1"
         ]
     },
     "device_types_cisco_test": {
         "hosts": [
             "R1-Device",
-            "TestDeviceR1",
-            "test100"
+            "test100",
+            "TestDeviceR1"
         ]
     },
     "device_types_nexus_parent": {
@@ -1346,16 +1790,16 @@
     "location_test_rack_group": {
         "hosts": [
             "Test Nexus One",
-            "TestDeviceR1",
-            "test100"
+            "test100",
+            "TestDeviceR1"
         ]
     },
     "manufacturers_cisco": {
         "hosts": [
             "R1-Device",
             "Test Nexus One",
-            "TestDeviceR1",
-            "test100"
+            "test100",
+            "TestDeviceR1"
         ]
     },
     "rack_role_test_rack_role": {
@@ -1391,12 +1835,6 @@
     "sites_test_site": {
         "children": [
             "location_parent_rack_group"
-        ],
-        "hosts": [
-            "test100-vm",
-            "test101-vm",
-            "test102-vm",
-            "test103-vm"
         ]
     },
     "sites_test_site2": {
@@ -1408,8 +1846,8 @@
         "hosts": [
             "R1-Device",
             "Test Nexus One",
-            "TestDeviceR1",
             "test100",
+            "TestDeviceR1",
             "Test VM With Spaces",
             "test100-vm",
             "test101-vm",

@@ -304,16 +304,10 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "services": [],
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -330,16 +324,10 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "services": [],
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -356,16 +344,10 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "services": [],
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -382,16 +364,10 @@
                     null
                 ],
                 "locations": [],
-                "regions": [
-                    "test-region",
-                    "parent-region"
-                ],
+                "regions": [],
                 "serial": "",
                 "services": [],
                 "site_groups": [],
-                "sites": [
-                    "test-site"
-                ],
                 "status": {
                     "label": "Active",
                     "value": "active"
@@ -428,8 +404,8 @@
         "hosts": [
             "R1-Device",
             "Test Nexus One",
-            "TestDeviceR1",
             "test100",
+            "TestDeviceR1",
             "Test VM With Spaces",
             "test100-vm",
             "test101-vm",
