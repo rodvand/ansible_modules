@@ -1,0 +1,6 @@
+---
+bugfixes:
+  - >-
+    Selection and multiple selection custom fields no longer always report
+    ``changed`` on NetBox 4.7+, where the API returns them as
+    ``{"value": ..., "label": ...}`` objects instead of raw values (#1604).

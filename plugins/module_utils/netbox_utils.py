@@ -1639,6 +1639,31 @@ class NetboxModule(object):
         diff = self._build_diff(before={"state": "present"}, after={"state": "absent"})
         return diff
 
+    @staticmethod
+    def _unwrap_selection_value(current, desired):
+        """Reduce NetBox >= 4.7 selection custom field values to the raw value.
+
+        Selection and multiple selection custom fields are returned as
+        {"value": ..., "label": ...} objects but are written as raw values.
+        Unwrap them so they compare equal to the raw value in the task. Values
+        are left untouched when the task itself passes such an object, as that
+        is indistinguishable from a JSON custom field.
+        """
+
+        def is_choice(item):
+            return isinstance(item, dict) and set(item) == {"value", "label"}
+
+        if is_choice(current) and not isinstance(desired, dict):
+            return current["value"]
+        if (
+            isinstance(current, list)
+            and current
+            and all(is_choice(item) for item in current)
+            and not any(isinstance(item, dict) for item in (desired or []))
+        ):
+            return [item["value"] for item in current]
+        return current
+
     def _update_netbox_object(self, data):
         """Update a NetBox object.
         :returns tuple(serialized_nb_obj, diff): tuple of the serialized updated
@@ -1647,9 +1672,12 @@ class NetboxModule(object):
         serialized_nb_obj = self.nb_object.serialize()
         if "custom_fields" in serialized_nb_obj:
             custom_fields = serialized_nb_obj.get("custom_fields", {})
-            shared_keys = custom_fields.keys() & data.get("custom_fields", {}).keys()
+            data_custom_fields = data.get("custom_fields", {})
+            shared_keys = custom_fields.keys() & data_custom_fields.keys()
             serialized_nb_obj["custom_fields"] = {
-                key: custom_fields[key]
+                key: self._unwrap_selection_value(
+                    custom_fields[key], data_custom_fields[key]
+                )
                 for key in shared_keys
                 if custom_fields[key] is not None
             }
