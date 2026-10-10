@@ -29,6 +29,18 @@ except ImportError:
     PYNETBOX_IMP_ERR = traceback.format_exc()
     HAS_PYNETBOX = False
 
+# NetBox v2 API tokens (NetBox >= 4.5) are formatted as nbt_<key>.<token>
+# and must be sent as "Bearer"; v1 tokens use the "Token" scheme.
+V2_TOKEN_PREFIX = "nbt_"
+
+
+def get_auth_scheme(token):
+    """Return the HTTP Authorization scheme matching the NetBox token format."""
+    if token and str(token).startswith(V2_TOKEN_PREFIX):
+        return "Bearer"
+    return "Token"
+
+
 # Used to map endpoints to applications dynamically
 API_APPS_ENDPOINTS = dict(
     circuits={
@@ -963,7 +975,9 @@ class NetboxModule(object):
                 headers = json.load(headers)
             if isinstance(headers, dict):
                 session.headers.update(headers)
-            session.headers.setdefault("Authorization", "Token %s" % token)
+            session.headers.setdefault(
+                "Authorization", "%s %s" % (get_auth_scheme(token), token)
+            )
             if cert:
                 session.cert = tuple(i for i in cert)
             nb = pynetbox.api(url, token=token)

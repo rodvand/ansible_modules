@@ -1,0 +1,6 @@
+---
+minor_changes:
+  - >-
+    Modules and ``nb_inventory`` now send NetBox v2 API tokens
+    (``nbt_<key>.<token>``) with the ``Bearer`` authorization scheme instead
+    of ``Token``, fixing ``Invalid v1 token`` errors on NetBox 4.5+ (#1580).
