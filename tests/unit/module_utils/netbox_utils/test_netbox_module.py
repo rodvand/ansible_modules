@@ -440,6 +440,89 @@ def test_update_netbox_object_unordered_list_detects_real_change(
     assert diff["after"]["tags"] == {1, 2, 4}
 
 
+@pytest.mark.parametrize(
+    ("existing", "incoming"),
+    [
+        pytest.param(
+            {"port_type": {"value": "MGMT", "label": "MGMT"}},
+            {"port_type": "MGMT"},
+            id="selection",
+        ),
+        pytest.param(
+            {
+                "ports": [
+                    {"value": "a", "label": "A"},
+                    {"value": "b", "label": "B"},
+                ]
+            },
+            {"ports": ["a", "b"]},
+            id="multiple-selection",
+        ),
+        pytest.param({"port_type": "MGMT"}, {"port_type": "MGMT"}, id="pre-4.7"),
+    ],
+)
+def test_update_netbox_object_selection_custom_fields_idempotent(
+    mocker, mock_netbox_module, existing, incoming
+):
+    """NetBox >= 4.7 returns selection custom fields as value/label objects."""
+    nb_obj = mocker.Mock(name="nb_obj")
+    nb_obj.serialize.return_value = {"name": "test", "custom_fields": existing}
+    mock_netbox_module.nb_object = nb_obj
+
+    serialized_obj, diff = mock_netbox_module._update_netbox_object(
+        {"custom_fields": incoming}
+    )
+
+    nb_obj.update.assert_not_called()
+    assert diff is None
+
+
+@pytest.mark.parametrize(
+    ("existing", "incoming"),
+    [
+        pytest.param(
+            {"port_type": {"value": "MGMT", "label": "MGMT"}},
+            {"port_type": "DATA"},
+            id="selection",
+        ),
+        pytest.param(
+            {"ports": [{"value": "a", "label": "A"}]},
+            {"ports": ["a", "b"]},
+            id="multiple-selection",
+        ),
+    ],
+)
+def test_update_netbox_object_selection_custom_fields_detects_change(
+    mocker, mock_netbox_module, existing, incoming
+):
+    nb_obj = mocker.Mock(name="nb_obj")
+    nb_obj.serialize.return_value = {"name": "test", "custom_fields": existing}
+    nb_obj.update.return_value = True
+    mock_netbox_module.nb_object = nb_obj
+
+    serialized_obj, diff = mock_netbox_module._update_netbox_object(
+        {"custom_fields": incoming}
+    )
+
+    assert diff is not None
+
+
+def test_update_netbox_object_json_custom_field_dict_untouched(
+    mocker, mock_netbox_module
+):
+    """A JSON custom field that looks like a choice is not unwrapped."""
+    value = {"value": "x", "label": "y"}
+    nb_obj = mocker.Mock(name="nb_obj")
+    nb_obj.serialize.return_value = {"name": "test", "custom_fields": {"j": value}}
+    mock_netbox_module.nb_object = nb_obj
+
+    serialized_obj, diff = mock_netbox_module._update_netbox_object(
+        {"custom_fields": {"j": value}}
+    )
+
+    assert diff is None
+
+
 @pytest.mark.parametrize("version", ["2.13", "2.12", "2.11", "2.10.8", "2.10"])
 def test_version_check_greater_true(mock_netbox_module, nb_obj_mock, version):
     mock_netbox_module.nb_object = nb_obj_mock
