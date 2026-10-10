@@ -469,7 +469,9 @@ def test_update_netbox_object_selection_custom_fields_idempotent(
     nb_obj.serialize.return_value = {"name": "test", "custom_fields": existing}
     mock_netbox_module.nb_object = nb_obj
 
-    _, diff = mock_netbox_module._update_netbox_object({"custom_fields": incoming})
+    serialized_obj, diff = mock_netbox_module._update_netbox_object(
+        {"custom_fields": incoming}
+    )
 
     nb_obj.update.assert_not_called()
     assert diff is None
@@ -498,7 +500,9 @@ def test_update_netbox_object_selection_custom_fields_detects_change(
     nb_obj.update.return_value = True
     mock_netbox_module.nb_object = nb_obj
 
-    _, diff = mock_netbox_module._update_netbox_object({"custom_fields": incoming})
+    serialized_obj, diff = mock_netbox_module._update_netbox_object(
+        {"custom_fields": incoming}
+    )
 
     assert diff is not None
 
@@ -512,7 +516,9 @@ def test_update_netbox_object_json_custom_field_dict_untouched(
     nb_obj.serialize.return_value = {"name": "test", "custom_fields": {"j": value}}
     mock_netbox_module.nb_object = nb_obj
 
-    _, diff = mock_netbox_module._update_netbox_object({"custom_fields": {"j": value}})
+    serialized_obj, diff = mock_netbox_module._update_netbox_object(
+        {"custom_fields": {"j": value}}
+    )
 
     assert diff is None
 
