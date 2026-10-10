@@ -87,7 +87,7 @@ DOCUMENTATION = """
                 - NetBox API token to be able to read against NetBox.
                 - This may not be required depending on the NetBox setup.
                 - You can provide a "type" and "value" for a token if your NetBox deployment is using a more advanced authentication like OAUTH.
-                - If you do not provide a "type" and "value" parameter, the HTTP authorization header will be set to "Token", which is the NetBox default
+                - If you do not provide a "type" and "value" parameter, the HTTP authorization header will be set to "Bearer" for NetBox v2 tokens (prefixed with C(nbt_)) and to "Token" for v1 tokens.
             env:
                 # in order of precedence
                 - name: NETBOX_TOKEN
@@ -2146,7 +2146,9 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
                     {"Authorization": f"{token['type'].capitalize()} {token['value']}"}
                 )
             else:
-                self.headers.update({"Authorization": "Token %s" % token})
+                # NetBox v2 tokens (nbt_<key>.<token>) use Bearer, v1 use Token
+                scheme = "Bearer" if str(token).startswith("nbt_") else "Token"
+                self.headers.update({"Authorization": f"{scheme} {token}"})
         headers = self.get_option("headers")
         if headers:
             if isinstance(headers, str):

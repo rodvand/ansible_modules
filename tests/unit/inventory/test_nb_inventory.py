@@ -266,6 +266,24 @@ def test_new_token(inventory_fixture, templar_fixture):
 
 
 @pytest.mark.parametrize(
+    "token, expected",
+    [
+        ("0123456789abcdef0123456789abcdef01234567", "Token "),
+        ("nbt_abc123.0123456789abcdef", "Bearer "),
+    ],
+)
+def test_token_auth_scheme(inventory_fixture, templar_fixture, token, expected):
+    inventory_fixture.templar = templar_fixture
+    inventory_fixture.templar.template = Mock(return_value=token)
+    inventory_fixture.get_option = Mock()
+    inventory_fixture.headers = {}
+
+    inventory_fixture._set_authorization()
+
+    assert inventory_fixture.headers["Authorization"] == expected + token
+
+
+@pytest.mark.parametrize(
     "custom_fields, expected", load_relative_test_data("extract_custom_fields")
 )
 def test_extract_custom_fields(inventory_fixture, custom_fields, expected):
